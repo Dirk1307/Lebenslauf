@@ -26,6 +26,7 @@
     document.getElementById('process-description').textContent = item.description;
     dialog.querySelector('.work-dialog-count').textContent = `${number} / 04`;
     art.className = `work-dialog-art work-art-${current}`;
+    art.querySelector('.work-dialog-visual').replaceChildren(buttons[current].querySelector('.work-illustration').cloneNode(true));
     art.querySelector('.work-dialog-number').textContent = number;
     buttons.forEach((button, i) => button.setAttribute('aria-expanded', String(i === current)));
   }

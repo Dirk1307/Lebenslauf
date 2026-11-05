@@ -6,7 +6,17 @@
 
 V6A enthält eine statische HTML-Seite mit mehreren aufeinander aufbauenden CSS-Ständen und drei eingebetteten Skriptblöcken. Die Effekte sind eigene Vanilla-JavaScript-Implementierungen; es wurden keine Componentry-/React-Komponenten importiert.
 
-## Inhaltliche Schärfung auf Basis der Nutzerangaben
+## Aktuelle redaktionelle Korrekturen und Bildauswahl
+
+- Den ausdrücklich gewünschten ursprünglichen Hero-Text wortgleich wiederhergestellt.
+- „YES, DAS BIN ICH“ durch „MIT IDEEN. MIT ENGAGEMENT.“ ersetzt; am freigegebenen Porträt selbst nichts geändert.
+- Arbeitgebernamen aus Über mich und den drei Erfahrungsfeldern entfernt. Die ungefähre Kundenzahl wird auf der Website nicht mehr genannt; die Karten formulieren allgemeine fachliche Fähigkeiten.
+- Werdegang mit persönlicheren Beschreibungen überarbeitet und den hochgeladenen Lebenslauf als Referenz genutzt: Projektleiter bei Recruiting Guru 10/2023–07/2025; Social Media Manager bei EKS Montage seit 07/2025. Studienbezug bleibt entfernt. Der PDF-Anhang wird als Inhaltsreferenz verwendet und nicht automatisch mit privaten Kontaktdaten ins Repository kopiert.
+- Die vom Nutzer bestätigten Bereiche 03 („Womit ich mich auskenne“) und 04 („So arbeite ich“) erhalten sieben verschiedene recherchierte Illustrationen. Die Grafikdateien bleiben unverändert; ihre vorgesehene `currentColor`-Farbe wird bei der SVG-Einbindung über CSS gesetzt.
+- Vorhandene Animationen, Layoutstruktur, Schriften und die beiden persönlichen Fotos bleiben bestehen. Die neue Bilddarstellung bewahrt vollständige Motive statt sie im Rahmen zu beschneiden.
+- Lizenz-/Quellzuordnung in `docs/BILDQUELLEN.md`; Einzeldatei-Vorschau bettet die SVG-Pfade ein und funktioniert damit weiterhin ohne Dateizugriffe oder Bildserver.
+
+## Vorherige inhaltliche Schärfung auf Basis der Nutzerangaben
 
 - Gewünschte Richtung: Marketing, Performance Marketing, Marketingstrategie, Social Media Marketing und Projektmanagement. Hero, Über mich, Stärken, Erfahrungsfelder und Kontakt sind darauf abgestimmt.
 - Recruiting Guru: eigenverantwortliche Betreuung von ca. 10–15 Kunden aus unterschiedlichen Branchen; Recruiting-Strategien, Meta-Kampagnen, Creatives, Landingpages und Bewerbungsfunnels, Kundenberatung, Projektkoordination und KPI-Analyse.

@@ -433,11 +433,10 @@ svg.giant-index{width:1.3em;height:1.3em;overflow:visible;fill:currentColor}
 
 /* Watermelon Expandable Profile Card, ported for V6A (MIT; see docs/WATERMELON.md). */
 .process-expandable{list-style:none;padding:0;margin:28px 0 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-.process-item{min-width:0;--work-art:url('network.svg')}
-.work-art-0{--work-art:url('network.svg')}.work-art-1{--work-art:url('performance.svg')}.work-art-2{--work-art:url('brand.svg')}.work-art-3{--work-art:url('projects.svg')}
+.process-item{min-width:0}
 .process-expandable .process-trigger{position:relative;display:block;width:100%;height:202px;min-height:0;padding:0;isolation:isolate;overflow:hidden;border:1px solid #d8e0f2;border-radius:20px;background:#182d68;color:#fff;box-shadow:0 10px 28px #1c2e5a0d;text-align:left;transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
 .process-expandable .process-trigger::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,#121f4620 10%,#0e1c54a8 52%,#101b48f5 100%);z-index:1;pointer-events:none}
-.process-expandable .process-visual{position:absolute;inset:0;display:block;margin:0;background-image:var(--work-art);background-position:center;background-size:cover;transition:transform .6s var(--ease)}
+.process-expandable .process-visual{position:absolute;inset:0;display:block;margin:0;background-position:center;background-size:cover;transition:transform .6s var(--ease)}
 .process-expandable .process-trigger:hover .process-visual{transform:scale(1.05)}
 .process-expandable .process-trigger:hover{box-shadow:0 16px 32px #1c2e5a20}
 .process-expandable .process-label{position:absolute;left:21px;right:45px;bottom:22px;z-index:2;margin:0;transform:translateY(3px);transition:transform .3s var(--ease)}
@@ -451,7 +450,7 @@ svg.giant-index{width:1.3em;height:1.3em;overflow:visible;fill:currentColor}
 .work-dialog:not([open]){display:none}
 .work-dialog::backdrop{background:#15223f80;backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px);animation:work-backdrop-in .25s ease-out}
 .work-dialog-shell{position:relative;display:grid;grid-template-columns:.9fr 1.1fr;height:min(480px,calc(100dvh - 42px))}
-.work-dialog-art{position:relative;overflow:hidden;min-width:0;min-height:0;background-color:#dce6ff;background-image:var(--work-art);background-size:cover;background-position:center}
+.work-dialog-art{position:relative;overflow:hidden;min-width:0;min-height:0;background-color:#dce6ff;background-size:cover;background-position:center}
 .work-dialog-art::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,#10235166,transparent 60%)}
 .work-dialog-number{position:absolute;bottom:24px;left:26px;z-index:1;font-size:clamp(60px,8vw,112px);font-weight:800;line-height:1;letter-spacing:-.09em;color:#fff}
 .work-dialog-close{position:absolute;top:14px;right:14px;z-index:3;display:grid;place-items:center;width:44px;height:44px;border:1px solid #cbd4e4;border-radius:50%;background:#fffffff0;color:#172344;box-shadow:0 3px 14px #18294d0f;font-size:24px;line-height:1}
@@ -487,3 +486,19 @@ svg.giant-index{width:1.3em;height:1.3em;overflow:visible;fill:currentColor}
 @media(max-width:380px){.process-expandable{grid-template-columns:1fr}.process-expandable .process-trigger{height:180px}.process-expandable .process-label{bottom:23px;right:50px}.process-expandable .process-label strong{font-size:25px}.process-expandable .process-open{bottom:20px}}
 @media(prefers-reduced-motion:reduce){.work-dialog::backdrop{animation:none}.process-expandable .process-trigger:hover .process-visual,.process-expandable .process-trigger:hover .process-label{transform:none}}
 @media print{.work-dialog{display:none!important}.process-step-description[hidden]{display:block!important}.process-trigger{break-inside:avoid}}
+
+/* Distinct researched illustrations for experience (03) and workflow (04).
+   Original SVGs stay unchanged; currentColor is the source's theme parameter. */
+.case-illustration{display:block;width:100%;height:100%;padding:clamp(22px,3vw,46px);color:var(--blue)}
+.case-card:nth-child(1) .case-image{background:#eef3ff}
+.case-card:nth-child(2) .case-image{background:#f1efff}
+.case-card:nth-child(3) .case-image{background:#e6f4f1}
+.process-expandable .process-visual{background-image:none;background-color:#e8eeff}
+.work-illustration{display:block;width:100%;height:100%;padding:12px 18px 34px;color:var(--blue)}
+.work-dialog-art{background-image:none;background-color:#eef3ff}
+.work-dialog-visual{position:absolute;inset:0}
+.work-dialog-visual .work-illustration{padding:34px 24px 108px}
+.work-dialog-art::after{background:linear-gradient(0deg,#dce5ffb0,transparent 65%);pointer-events:none}
+.work-dialog-number{color:var(--blue)}
+@media(max-width:780px){.case-illustration{padding:14px 22px}}
+@media(max-width:640px){.work-dialog-visual .work-illustration{padding:16px 30px 18px}}

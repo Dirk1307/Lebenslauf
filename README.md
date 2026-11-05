@@ -4,10 +4,13 @@ Diese Website entwickelt die gelieferte V6A weiter. HTML, Inhalte, Reihenfolge, 
 
 ## Aktueller Inhaltsstand
 
-Die Positionierung richtet sich auf **Marketing, Performance Marketing, Marketingstrategie, Social Media Marketing und Projektmanagement**. Die Texte verwenden die vom Nutzer bestätigten Aufgaben bei Recruiting Guru und EKS Montage. Konkrete Praxis: ca. 10–15 Kunden, Meta Ads, Creatives, Landingpages und Bewerbungsfunnels, LinkedIn/Instagram/Facebook, Content, KPI-Analyse, Budgetverwaltung sowie Projektkoordination. Nicht genannte Daten, Ergebnisse, Tools oder Qualifikationen werden nicht ergänzt.
+Die Positionierung richtet sich auf **Marketing, Performance Marketing, Marketingstrategie, Social Media Marketing und Projektmanagement**. Die Texte verwenden die vom Nutzer bestätigten Aufgaben bei Recruiting Guru und EKS Montage. Allgemeine fachliche Schwerpunkte sind Meta Ads, Creatives, Landingpages und Bewerbungsfunnels, LinkedIn/Instagram/Facebook, Content, KPI-Analyse, Budgetverwaltung sowie Projektkoordination. Arbeitgebernamen stehen ausschließlich im Werdegang; konkrete Kundenzahlen werden auf der Seite nicht genannt. Nicht genannte Daten, Ergebnisse, Tools oder Qualifikationen werden nicht ergänzt.
 
+- Hero-Text: Der ursprüngliche Wortlaut „Strategisch im Kopf. Kreativ in der Umsetzung. Ich verbinde Marketing, digitale Ideen und Projektarbeit – mit dem Anspruch, Dinge wirklich voranzubringen.“ ist auf Nutzerwunsch wiederhergestellt.
 - Hero: das ausdrücklich gewählte Originalfoto **ohne Kappe, mit verschränkten Armen** (`portrait-smile.webp`, unverändert nach `hero-dirk.webp` übernommen). Das zweite Foto zeigt weiterhin auf die Kamera. Es bleiben genau zwei Personenfotos.
-- Die Studien-Station „Marketing Management“ ist aus dem Werdegang entfernt. Recruiting Guru und EKS Montage GmbH bleiben erhalten.
+- Der Lebenslauf „Dirk Herrmann.pdf“ wurde als Referenz für Rollen und Zeiträume verwendet: Projektleiter bei Recruiting Guru (10/2023–07/2025) und Social Media Manager bei EKS Montage (seit 07/2025). Die Arbeitgeber werden nur hier im Werdegang genannt; die allgemeinen Skills bleiben ohne Firmenbezug. Der Studienbezug bleibt entfernt.
+- Bildhinweis am zweiten Foto: „MIT IDEEN. MIT ENGAGEMENT.“.
+- Abschnitt 03 und 04 verwenden sieben unterschiedliche recherchierte unDraw-Motive im bestehenden Kobaltblau. Quellen und Lizenzzuordnung: [docs/BILDQUELLEN.md](docs/BILDQUELLEN.md).
 - Die vier Arbeitsweise-Schritte öffnen sich als **Expandable Cards** mit Detailansicht nach der gewünschten Watermelon-Vorlage. Die Beschreibungen sind auf die Marketing-Arbeitsweise ausgerichtet; die V6-Farbwelt bleibt erhalten. Die Vanilla-Portierung, Originalquelle und MIT-Lizenz sind in [docs/WATERMELON.md](docs/WATERMELON.md) dokumentiert.
 
 ## Vorschau ohne Installation
@@ -41,6 +44,7 @@ Dann im Browser `http://localhost:8000` öffnen. Mit `Strg+C` beenden. Für die 
 - `assets/site.js`: Navigation und die fünf bisherigen Animationen, ohne Bibliothek zur Laufzeit.
 - `assets/work-card.js`: aufklappbare Arbeitsweise-Karten mit modalem Dialog und Tastatursteuerung.
 - `assets/hero-dirk.webp` und `assets/about-dirk.webp`: die zwei ausgewählten Original-Personenfotos; die Hero-Auswahl wurde auf Nutzerwunsch geändert.
+- `assets/illustrations/`: sieben unterschiedliche SVG-Motive für Erfahrungsfelder und Arbeitsweise, mit Quellenmanifest.
 - `assets/fonts/`: DM Sans, DM Serif Display und ein kleines monochromes Symbol-Subset inklusive Lizenzen. Keine Verbindung zu Google Fonts.
 - `AENDERUNGEN.md` und `PRUEFBERICHT.md`: Änderungen, Testergebnisse und Grenzen.
 - Die vier ursprünglichen Übergabedokumente und `referenzen/` bleiben als Ausgangsdokumentation erhalten. Für spätere freigegebene Änderungen gelten der aktuelle Inhaltsstand hier und `AENDERUNGEN.md`.

@@ -68,28 +68,28 @@
   ],
   "metrics": {
     "320": {
-      "cls": 0.21004444444444442,
-      "lcp": 304,
-      "heroFrames": 26,
-      "resources": 13
+      "cls": 0.0006625311007323088,
+      "lcp": 656,
+      "heroFrames": 27,
+      "resources": 16
     },
     "390": {
       "cls": 0,
-      "lcp": 1060,
-      "heroFrames": 23,
-      "resources": 13
+      "lcp": 492,
+      "heroFrames": 26,
+      "resources": 16
     },
     "768": {
-      "cls": 0.0556,
-      "lcp": 640,
-      "heroFrames": 26,
-      "resources": 13
+      "cls": 0.0005579781708893952,
+      "lcp": 408,
+      "heroFrames": 27,
+      "resources": 16
     },
     "1440": {
-      "cls": 0.00024511561766573433,
-      "lcp": 588,
-      "heroFrames": 16,
-      "resources": 13
+      "cls": 0,
+      "lcp": 480,
+      "heroFrames": 26,
+      "resources": 17
     }
   }
 }

@@ -19,6 +19,14 @@ html = html.replace(/<script src="(assets\/[^"<>]+)" defer><\/script>/g, (match,
   return '';
 });
 html = html.replace('</body>', `<script>\n${scripts.join('\n')}\n</script>\n</body>`);
+// External SVG <use> keeps currentColor themeing in the normal site. Embed the
+// original paths for the standalone copy so it needs no file:// fetches.
+html = html.replace(/<use href="(assets\/illustrations\/[^"<>]+\.svg)"><\/use>/g, (match, file) => {
+  const source = fs.readFileSync(path.join(root, file), 'utf8');
+  const inner = source.match(/<svg\b[^>]*>([\s\S]*)<\/svg>\s*$/);
+  if (!inner) throw new Error(`Invalid illustration: ${file}`);
+  return inner[1];
+});
 html = html.replace(/(src|href)="(assets\/[^"<>]+)"/g, (match, attr, file) => `${attr}="${dataUri(path.join(root, file))}"`);
 // All resources are already embedded; eager loading makes offline checks predictable.
 html = html.replaceAll('loading="lazy"', 'loading="eager"');
@@ -26,7 +34,9 @@ const licenseFiles = [
   'assets/fonts/LICENSE-V6A-Symbols.txt',
   'assets/fonts/OFL-DM-Sans.txt',
   'assets/fonts/OFL-DM-Serif-Display.txt',
-  'assets/licenses/Watermelon-MIT.txt'
+  'assets/licenses/Watermelon-MIT.txt',
+  'assets/licenses/evoMark-MIT.txt',
+  'assets/licenses/unDraw.txt'
 ];
 const licenses = licenseFiles.map(file => `${file}\n${fs.readFileSync(path.join(root, file), 'utf8')}`).join('\n\n');
 html = html.replace('</head>', `<!-- Single-file V6A review copy. Third-party licenses:\n${licenses.replaceAll('--', '—')}\n-->\n</head>`);

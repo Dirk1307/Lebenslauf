@@ -1,0 +1,50 @@
+{
+  "artist": "Katerina Limpitsouni / unDraw",
+  "source_repository": "https://github.com/evo-mark/undraw-svg",
+  "source_commit": "d467f080ae92a39110774f8eb80bcd2c61d88a09",
+  "original_terms": "https://undraw.co/license",
+  "assets": [
+    {
+      "file": "marketing-analysis.svg",
+      "usage": "03 · Performance Marketing",
+      "source_path": "svgs/marketing-analysis.svg",
+      "sha256": "e28feb14c7f43435778775794145932f36d13b3f3a67dc8a89db2289e3d24582"
+    },
+    {
+      "file": "social-media-post.svg",
+      "usage": "03 · Social Media",
+      "source_path": "svgs/social-media-post.svg",
+      "sha256": "3d0bb30b5c07af7441e51525c725b1e0ce900aa40aeb03413d8f3d3157879d64"
+    },
+    {
+      "file": "organizing-projects.svg",
+      "usage": "03 · Projektmanagement",
+      "source_path": "svgs/organizing-projects.svg",
+      "sha256": "87b8c28186862dfdf465a2e1960e68315eafabbf27fa202ec7f6a8e8efba2cf7"
+    },
+    {
+      "file": "researching.svg",
+      "usage": "04 · Verstehen",
+      "source_path": "svgs/researching.svg",
+      "sha256": "5be9943a6a131597ac7635134df18dc49e1ceb9def938056a1fb289b0d646231"
+    },
+    {
+      "file": "business-analytics.svg",
+      "usage": "04 · Hinterfragen",
+      "source_path": "svgs/business-analytics.svg",
+      "sha256": "28ef9a817ffb738c68f0ec3d512304976ba7a63b0da893ab0d76e3e158808489"
+    },
+    {
+      "file": "creative-process.svg",
+      "usage": "04 · Entwickeln",
+      "source_path": "svgs/creative-process.svg",
+      "sha256": "bf63735dcfcb48e15ece88f9d56945ee00ddfd2f613e333f93f0b5aec33dd367"
+    },
+    {
+      "file": "project-team.svg",
+      "usage": "04 · Umsetzen",
+      "source_path": "svgs/project-team.svg",
+      "sha256": "6f4130178f28902719b2bcb2fee636fa1d79ae2015a983ec66d7e2012161c605"
+    }
+  ]
+}

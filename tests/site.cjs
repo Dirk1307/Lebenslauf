@@ -92,6 +92,15 @@ const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
     assert.deepEqual(await page.locator('.hero-portrait img').evaluate(i=>[i.naturalWidth,i.naturalHeight]),[1000,667]);
     assert.equal(await page.locator('main').innerText().then(text=>/Studium|Marketing Management|Fachlicher Einstieg/.test(text)),false);
     assert.deepEqual(await page.locator('.career-line h3').allTextContents(),['Recruiting Guru','EKS Montage GmbH']);
+    assert.equal(await page.locator('.hero-deck').textContent(),'Strategisch im Kopf. Kreativ in der Umsetzung. Ich verbinde Marketing, digitale Ideen und Projektarbeit – mit dem Anspruch, Dinge wirklich voranzubringen.');
+    const generalText=await page.locator('#ueber-mich, #erfahrung').allTextContents();
+    assert.equal(/Recruiting Guru|EKS Montage|10[–-]15/.test(generalText.join(' ')),false);
+    assert.equal((await page.locator('.intro-photo-note').textContent()).includes('YES'),false);
+    const illustrationSelector='.case-illustration, .process-trigger .work-illustration';
+    await page.waitForFunction(selector=>[...document.querySelectorAll(selector)].length===7 && [...document.querySelectorAll(selector)].every(svg=>svg.getBBox().width>0),illustrationSelector);
+    const illustrationSources=await page.locator(illustrationSelector).evaluateAll(els=>els.map(svg=>svg.querySelector('use').getAttribute('href')));
+    assert.equal(new Set(illustrationSources).size,7);
+
     assert.equal(await page.evaluate(() => document.fonts.check('800 16px "DM Sans"') && document.fonts.check('italic 16px "DM Serif Display"')), true);
     await page.screenshot({path:path.join(results,`hero-${width}.png`)});
     if (width===390) {
@@ -342,6 +351,7 @@ const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
     await page.setContent(await fs.readFile(path.join(root,'vorschau/Dirk_Herrmann_V6A_Vorschau.html'),'utf8'),{waitUntil:'load'});
     await page.evaluate(()=>document.fonts.ready);
     assert.equal(await page.locator('main').innerText().then(text=>/Studium|Marketing Management/.test(text)),false);
+    assert.equal(await page.locator('.case-illustration, .process-trigger .work-illustration').evaluateAll(els=>els.length===7 && els.every(svg=>svg.getBBox().width>0)),true);
     assert.deepEqual(await page.locator('.hero-portrait img').evaluate(i=>[i.naturalWidth,i.naturalHeight]),[1000,667]);
     await page.locator('[data-step="2"]').click();
     assert.equal(await page.getByRole('dialog').isVisible(),true);

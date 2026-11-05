@@ -1,6 +1,6 @@
 # Sichtprüfung und Testdaten
 
-Alle Bilder stammen aus dem abschließend bestandenen Chromium-Prüflauf auf dem optimierten V6A-Stand. Smartphone-Ansichten sind Emulationen.
+Alle Bilder stammen aus dem abschließend bestandenen Chromium-Prüflauf auf dem optimierten V6A-Stand mit ursprünglichem Hero-Text, lebenslaufbasiertem Werdegang und sieben unterschiedlichen Illustrationen in Abschnitt 03/04. Smartphone-Ansichten sind Emulationen.
 
 - [Hero · Smartphone 390 px](hero-390.png)
 - [Hero · Tablet 768 px](hero-768.png)

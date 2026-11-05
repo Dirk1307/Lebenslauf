@@ -1,6 +1,6 @@
 # Prüfbericht · V6A technisch optimiert
 
-Stand: 5. November 2026. Geprüft wurde die vorhandene Website nach den gezielten technischen Änderungen und den freigegebenen Inhaltsanpassungen: Hero ohne Kappe/mit verschränkten Armen, entfernter Studien-Eintrag, Expandable Cards im Bereich Arbeitsweise sowie die auf Nutzerangaben konkretisierte Marketing-Positionierung.
+Stand: 5. November 2026. Geprüft wurde die vorhandene Website nach den gezielten technischen Änderungen und den freigegebenen Inhaltsanpassungen: Hero ohne Kappe/mit verschränkten Armen, entfernter Studien-Eintrag, Expandable Cards im Bereich Arbeitsweise sowie die anhand der Nutzerkorrekturen und des Lebenslaufs überarbeiteten Texte und sieben unterschiedliche Illustrationen in Abschnitt 03/04.
 
 ## Durchführung
 
@@ -19,7 +19,7 @@ Der abschließende maschinenlesbare Bericht und ausgewählte Screenshots liegen 
 | 844 × 390 und 720 × 450 | Niedrige/querformatige bzw. schmale Viewports: fließende Karten statt abgeschnittener Sticky-Stufen |
 | Navigation/Tastatur | Skip-Link, Menüöffnung, Tab-Reihenfolge, Escape mit Fokusrückgabe, Menüschließen und Fokus am Kontaktziel geprüft |
 | Arbeitsweise / Watermelon-Portierung | Alle vier Karten per Tastatur geöffnet; richtige Beschreibung, seitlicher/gestapelter Dialog, Tab-/Shift-Tab-Fokusumlauf, Escape, Schließen-Button, Hintergrundklick, Fokusrückgabe und vorheriger/nächster Schritt geprüft |
-| Bilder | Alle fünf verwendeten Bilddateien erfolgreich geladen, einschließlich der horizontal zunächst außerhalb liegenden Lazy-Load-SVGs |
+| Bilder | Beide persönlichen Fotos und alle sieben unterschiedlichen SVG-Illustrationen geladen; Quelle/Originaldateien geprüft, SVG-Motive im bestehenden Kobaltblau und auch im geöffneten Dialog sichtbar |
 | Hero Geometric | Hintergrund läuft, ist pausierbar und zeichnet außerhalb des Sichtfelds keine weiteren Frames |
 | Image Ripple | Mausbewegung aktiviert fehlerfreies WebGL auf beiden Fotos; Wellen enden wieder im unveränderten Originalbild |
 | WebGL nicht verfügbar | Tatsächliche 2D-Wellen auf beiden Fotos nachgewiesen; Originalfotos bleiben sichtbar |
@@ -40,8 +40,8 @@ Insgesamt: **36 Prüfgruppen bestanden**. Einzelne Prüfgruppen enthalten mehrer
 
 ## Integrität und Veröffentlichungsvorbereitung
 
-- Die ausdrücklich unerwünschte Studien-Station ist entfernt; die zwei beruflichen Stationen bleiben erhalten. Die vier Arbeitsweise-Beschreibungen liegen im HTML und werden in den Dialogen wiederverwendet. Hero, Über mich, Kompetenzkarten, Erfahrungsfelder, Werdegang und Kontakt wurden auf die gewünschten Marketingaufgaben sowie die vom Nutzer bestätigten Tätigkeiten bei Recruiting Guru und EKS Montage konkretisiert. Die ungefähre Kundenzahl von 10–15 stammt aus diesen Angaben; zusätzliche Erfolgskennzahlen oder Beschäftigungsdaten wurden nicht ergänzt.
-- Das neue Hero-Bild entspricht bytegenau der ausdrücklich gewählten Originaldatei `portrait-smile.webp` aus der ZIP. Das Über-mich-Foto und sämtliche SVGs sind unverändert. Die vier ursprünglichen Übergabedokumente bleiben als Ausgangsarchiv erhalten; neuere Nutzerentscheidungen sind im aktuellen README dokumentiert.
+- Die ausdrücklich unerwünschte Studien-Station ist entfernt; die zwei beruflichen Stationen bleiben erhalten. Die vier Arbeitsweise-Beschreibungen liegen im HTML und werden in den Dialogen wiederverwendet. Hero, Über mich, Kompetenzkarten, Erfahrungsfelder, Werdegang und Kontakt wurden auf die gewünschten Marketingaufgaben sowie die vom Nutzer bestätigten Tätigkeiten bei Recruiting Guru und EKS Montage konkretisiert. Die Kundenzahl wird auf Nutzerwunsch nicht mehr genannt; Arbeitgebernamen stehen nur im Werdegang. Die Rollen und Beschäftigungszeiträume dort stammen aus dem bereitgestellten Lebenslauf. Der ursprüngliche Hero-Text ist wortgleich wiederhergestellt.
+- Das neue Hero-Bild entspricht bytegenau der ausdrücklich gewählten Originaldatei `portrait-smile.webp` aus der ZIP. Das Über-mich-Foto bleibt unverändert. Die sieben neu recherchierten SVGs entsprechen bytegenau den dokumentierten Quelldateien; die ursprünglichen Grafiken bleiben im Arbeitsarchiv erhalten. Die vier ursprünglichen Übergabedokumente bleiben als Ausgangsarchiv erhalten; neuere Nutzerentscheidungen sind im aktuellen README dokumentiert.
 - SHA-256 Hero: `d4b58f22bc704073dc9e18353e9c7ebc2ba55230cfb0d3be618df292269964f4`
 - SHA-256 Über mich: `b6acd135776df7dfaac430ae735751ffe9bdcdad170f683a038b13d9b66266d4`
 - `vercel.json` und `netlify.toml` lassen sich parsen und haben übereinstimmende Sicherheitsheader sowie dasselbe Ausgabeverzeichnis. Die Anwendung funktioniert unter dieser CSP.
@@ -50,7 +50,7 @@ Insgesamt: **36 Prüfgruppen bestanden**. Einzelne Prüfgruppen enthalten mehrer
 
 ## Ladeverhalten
 
-Das ausgewählte Hero-Foto ist rund 40 KB groß (vorher rund 280 KB), hat hohe Ladepriorität und passende intrinsische Maße. Das zweite Foto und die SVG-Felder laden verzögert; beim horizontalen Weiterscrollen werden die weiteren Bilder korrekt nachgeladen. Schriften, Styles und Skripte liegen lokal. Es gibt keine externe Schrift-, API- oder Animationsbibliothek zur Laufzeit. Die bereitgestellten Cache-Regeln können erst beim Hosting wirksam werden.
+Das ausgewählte Hero-Foto ist rund 40 KB groß (vorher rund 280 KB), hat hohe Ladepriorität und passende intrinsische Maße. Das zweite Foto lädt verzögert. Die neuen SVG-Dateien werden lokal eingebunden und im Browser mit ihrer vorgesehenen CSS-Farbe dargestellt. In der Einzeldatei sind die Vektorpfade direkt enthalten; es gibt keine externen Bild- oder Dateizugriffe. Schriften, Styles und Skripte liegen lokal. Es gibt keine externe Schrift-, API- oder Animationsbibliothek zur Laufzeit. Die bereitgestellten Cache-Regeln können erst beim Hosting wirksam werden.
 
 Der JSON-Bericht enthält lokale, frühe LCP-/CLS-Beobachtungen aus dem Browser. Sie sind **keine Lighthouse-Bewertung** und kein Feldnachweis unter Mobilfunkbedingungen. Insbesondere können Schriftwechsel und langsame Geräte andere Ergebnisse liefern. Es wird kein erfundener Lighthouse-Score oder garantierter FPS-Wert angegeben.
 

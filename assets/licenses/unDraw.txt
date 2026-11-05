@@ -1,0 +1,14 @@
+Illustrationen: Katerina Limpitsouni / unDraw
+Originalquelle: https://undraw.co/illustrations
+Originale Nutzungsbedingungen: https://undraw.co/license
+
+SVG-Dateien bezogen aus der Sammlung evo-mark/undraw-svg:
+https://github.com/evo-mark/undraw-svg
+Commit: d467f080ae92a39110774f8eb80bcd2c61d88a09
+
+Die Original-Illustrationen unterliegen den unDraw-Nutzungsbedingungen.
+Die zusätzliche MIT-Lizenz der Sammlung evoMark ist in evoMark-MIT.txt enthalten.
+Verwendung hier als einzelne Motive einer persönlichen Bewerbungswebsite,
+nicht als eigenständige oder konkurrierende Illustrationssammlung.
+Grafikdateien unverändert; das vom Anbieter vorgesehene currentColor wird
+bei der Einbindung über CSS auf das Kobaltblau der Website gesetzt.

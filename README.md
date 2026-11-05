@@ -4,9 +4,11 @@ Diese Website entwickelt die gelieferte V6A weiter. HTML, Inhalte, Reihenfolge, 
 
 ## Aktueller Inhaltsstand
 
+Die Positionierung richtet sich auf **Marketing, Performance Marketing, Marketingstrategie, Social Media Marketing und Projektmanagement**. Die Texte verwenden die vom Nutzer bestätigten Aufgaben bei Recruiting Guru und EKS Montage. Konkrete Praxis: ca. 10–15 Kunden, Meta Ads, Creatives, Landingpages und Bewerbungsfunnels, LinkedIn/Instagram/Facebook, Content, KPI-Analyse, Budgetverwaltung sowie Projektkoordination. Nicht genannte Daten, Ergebnisse, Tools oder Qualifikationen werden nicht ergänzt.
+
 - Hero: das ausdrücklich gewählte Originalfoto **ohne Kappe, mit verschränkten Armen** (`portrait-smile.webp`, unverändert nach `hero-dirk.webp` übernommen). Das zweite Foto zeigt weiterhin auf die Kamera. Es bleiben genau zwei Personenfotos.
 - Die Studien-Station „Marketing Management“ ist aus dem Werdegang entfernt. Recruiting Guru und EKS Montage GmbH bleiben erhalten.
-- Die vier Arbeitsweise-Schritte öffnen sich als **Expandable Cards** mit Detailansicht nach der gewünschten Watermelon-Vorlage. Die bestehenden Beschreibungen und die V6-Farbwelt bleiben erhalten. Die Vanilla-Portierung, Originalquelle und MIT-Lizenz sind in [docs/WATERMELON.md](docs/WATERMELON.md) dokumentiert.
+- Die vier Arbeitsweise-Schritte öffnen sich als **Expandable Cards** mit Detailansicht nach der gewünschten Watermelon-Vorlage. Die Beschreibungen sind auf die Marketing-Arbeitsweise ausgerichtet; die V6-Farbwelt bleibt erhalten. Die Vanilla-Portierung, Originalquelle und MIT-Lizenz sind in [docs/WATERMELON.md](docs/WATERMELON.md) dokumentiert.
 
 ## Vorschau ohne Installation
 

@@ -17,7 +17,7 @@ Die Registry-Domain war in der Cloud-Umgebung gesperrt. Deshalb wurde der Code d
 
 Der React-/Motion-/Tailwind-Quellcode ist nicht direkt in ein statisches HTML-Dokument einsetzbar. Statt einer Migration der ganzen Website wurde das Karten-/Overlay-Verhalten in `assets/work-card.js` und dem entsprechenden Abschnitt von `assets/site.css` umgesetzt. Es handelt sich um eine Vanilla-Portierung nach der Originalquelle, **nicht** um einen ausgeführten shadcn-CLI-Import. Die Website benötigt weiterhin keinen Framework-Build und keine neue Laufzeitbibliothek.
 
-Die vier bestehenden Schritte und ihre Beschreibungen bleiben erhalten: Verstehen, Hinterfragen, Entwickeln, Umsetzen. Es werden die bereits vorhandenen abstrakten SVG-Illustrationen statt des fremden Beispielfotos verwendet. Die fiktiven Texte und Kontaktangaben des Watermelon-Demos werden nicht übernommen.
+Die vier Schritte bleiben erhalten: Verstehen, Hinterfragen, Entwickeln, Umsetzen. Ihre Beschreibungen wurden in der anschließenden Inhaltsrunde auf die vom Nutzer bestätigten Marketingaufgaben konkretisiert. Es werden die bereits vorhandenen abstrakten SVG-Illustrationen statt des fremden Beispielfotos verwendet. Die fiktiven Texte und Kontaktangaben des Watermelon-Demos werden nicht übernommen.
 
 Zusätzlich zur Vorlage: native modale Dialog-Semantik, Tastaturaktivierung, Escape, Fokusbegrenzung durch `showModal()`, Fokusrückgabe, Schließen über Schaltfläche oder Hintergrund, gesperrtes Hintergrundscrollen, vorheriger/nächster Schritt sowie reduzierte Bewegung. Ohne JavaScript bzw. ohne Dialog-Unterstützung bleiben alle vier Beschreibungen direkt unter ihren Karten lesbar.
 

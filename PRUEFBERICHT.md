@@ -1,6 +1,6 @@
 # Prüfbericht · V6A technisch optimiert
 
-Stand: 5. November 2026. Geprüft wurde die vorhandene Website nach den gezielten technischen Änderungen und den freigegebenen Inhaltsanpassungen: Hero ohne Kappe/mit verschränkten Armen, entfernter Studien-Eintrag und Expandable Cards im Bereich Arbeitsweise.
+Stand: 5. November 2026. Geprüft wurde die vorhandene Website nach den gezielten technischen Änderungen und den freigegebenen Inhaltsanpassungen: Hero ohne Kappe/mit verschränkten Armen, entfernter Studien-Eintrag, Expandable Cards im Bereich Arbeitsweise sowie die auf Nutzerangaben konkretisierte Marketing-Positionierung.
 
 ## Durchführung
 
@@ -40,7 +40,7 @@ Insgesamt: **36 Prüfgruppen bestanden**. Einzelne Prüfgruppen enthalten mehrer
 
 ## Integrität und Veröffentlichungsvorbereitung
 
-- Die ausdrücklich unerwünschte Studien-Station ist entfernt; die zwei beruflichen Stationen bleiben erhalten. Die vier ursprünglichen Arbeitsweise-Beschreibungen wurden aus dem bisherigen Skript ins HTML übernommen und werden in den neuen Dialogen wiederverwendet. Alle übrigen fachlichen Inhalte bleiben erhalten.
+- Die ausdrücklich unerwünschte Studien-Station ist entfernt; die zwei beruflichen Stationen bleiben erhalten. Die vier Arbeitsweise-Beschreibungen liegen im HTML und werden in den Dialogen wiederverwendet. Hero, Über mich, Kompetenzkarten, Erfahrungsfelder, Werdegang und Kontakt wurden auf die gewünschten Marketingaufgaben sowie die vom Nutzer bestätigten Tätigkeiten bei Recruiting Guru und EKS Montage konkretisiert. Die ungefähre Kundenzahl von 10–15 stammt aus diesen Angaben; zusätzliche Erfolgskennzahlen oder Beschäftigungsdaten wurden nicht ergänzt.
 - Das neue Hero-Bild entspricht bytegenau der ausdrücklich gewählten Originaldatei `portrait-smile.webp` aus der ZIP. Das Über-mich-Foto und sämtliche SVGs sind unverändert. Die vier ursprünglichen Übergabedokumente bleiben als Ausgangsarchiv erhalten; neuere Nutzerentscheidungen sind im aktuellen README dokumentiert.
 - SHA-256 Hero: `d4b58f22bc704073dc9e18353e9c7ebc2ba55230cfb0d3be618df292269964f4`
 - SHA-256 Über mich: `b6acd135776df7dfaac430ae735751ffe9bdcdad170f683a038b13d9b66266d4`

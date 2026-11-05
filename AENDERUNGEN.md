@@ -6,11 +6,21 @@
 
 V6A enthält eine statische HTML-Seite mit mehreren aufeinander aufbauenden CSS-Ständen und drei eingebetteten Skriptblöcken. Die Effekte sind eigene Vanilla-JavaScript-Implementierungen; es wurden keine Componentry-/React-Komponenten importiert.
 
+## Inhaltliche Schärfung auf Basis der Nutzerangaben
+
+- Gewünschte Richtung: Marketing, Performance Marketing, Marketingstrategie, Social Media Marketing und Projektmanagement. Hero, Über mich, Stärken, Erfahrungsfelder und Kontakt sind darauf abgestimmt.
+- Recruiting Guru: eigenverantwortliche Betreuung von ca. 10–15 Kunden aus unterschiedlichen Branchen; Recruiting-Strategien, Meta-Kampagnen, Creatives, Landingpages und Bewerbungsfunnels, Kundenberatung, Projektkoordination und KPI-Analyse.
+- EKS Montage: eigenverantwortliche Social-Media- und Employer-Branding-Strategie auf LinkedIn, Instagram und Facebook, Content von der Planung bis zur Veröffentlichung, Meta-Recruiting-Kampagnen inklusive Budgetverwaltung und Performance-Analyse, Koordination mit Fachabteilungen und externen Dienstleistern.
+- Die Erfahrungsfelder verbinden die Marketing-Ausrichtung mit diesen konkreten Praxisaufgaben. Social Recruiting und Employer Branding bleiben als belegte fachliche Schwerpunkte erhalten.
+- Die Arbeitsweise-Beschreibungen erläutern jetzt Zielsetzung, KPI-Prüfung, Konzeption und Umsetzung von Marketingmaßnahmen. Ihre vier Schritte und die Kartenfunktion bleiben erhalten.
+- Den redaktionellen Meta-Hinweis „ohne geschönte Referenzen oder fiktive Projekte“ aus dem sichtbaren Text entfernt. Keine zusätzlichen Abschlüsse, Beschäftigungsdaten, Kundennamen oder Erfolgskennzahlen ergänzt.
+- Es wurden ausschließlich Texte in der Hauptseite und der daraus generierten Vorschau geändert; Bilddateien, Styles und Interaktionscode sind bei dieser Inhaltsrunde unverändert.
+
 ## Freigegebene Inhalts- und Komponentenänderungen
 
 - Hero-Foto auf ausdrücklichen Nutzerwunsch gegen das vorhandene Bild ohne Kappe und mit verschränkten Armen ausgetauscht. `hero-dirk.webp` entspricht bytegenau `portrait-smile.webp` aus der Übergabe; die Bildmaße sind jetzt 1000 × 667. Der Bogenrahmen und Ripple bleiben erhalten. Das neue Hero-Asset ist mit rund 40 KB deutlich kleiner als das vorherige Bild (rund 280 KB).
 - Die gesamte Studien-Station „Marketing Management / Studium und praktische Grundlagen …“ entfernt. Die beiden beruflichen Stationen bleiben unverändert; es wurde kein Ersatzabschluss ergänzt.
-- Arbeitsweise anhand der ausdrücklich verlinkten Watermelon Expandable Profile Card überarbeitet. Vier kompakte Karten öffnen eine größere Detailansicht, auf Desktop zweispaltig und mobil gestapelt. Bestehende vier Überschriften und Beschreibungen statt fremder Demo-Biografie. Lokale abstrakte SVGs statt weiterer Personenfotos.
+- Arbeitsweise anhand der ausdrücklich verlinkten Watermelon Expandable Profile Card überarbeitet. Vier kompakte Karten öffnen eine größere Detailansicht, auf Desktop zweispaltig und mobil gestapelt. Vier eigene Arbeitsweise-Schritte statt fremder Demo-Biografie; die Beschreibungen sind inzwischen auf die bestätigten Marketingaufgaben konkretisiert. Lokale abstrakte SVGs statt weiterer Personenfotos.
 - Originalquelle im offiziellen Watermelon-Repository geprüft; Vanilla-Portierung statt eines React-/Motion-/Tailwind-Umbaus. MIT-Lizenz und genaue Quellenzuordnung sind enthalten. Der shadcn-CLI-Befehl wurde nicht als Installation ausgeführt. Einzelheiten: `docs/WATERMELON.md`.
 - Dialogbedienung mit Escape, Schließen-Button, Hintergrundklick, Tab-/Shift-Tab-Umlauf, Fokusrückgabe, vorherigem/nächstem Schritt, reduzierter Bewegung und lesbarem Fallback ohne JavaScript/`showModal()`.
 - Einzeldatei-Vorschau wird nun reproduzierbar aus dem aktuellen Projekt erzeugt und mitgetestet; neue Fotos und Inhalte sind damit auch im GitHub-Download enthalten.
@@ -32,6 +42,6 @@ V6A enthält eine statische HTML-Seite mit mehreren aufeinander aufbauenden CSS-
 
 ## Bewahrt
 
-Helle V6-Farbwelt, Kobaltblau/Limette, DM-Typografie, asymmetrischer Hero, Bogenformen, Abstände und Sektionen basieren weiterhin auf V6A. Alle übrigen fachlichen Texte, Kompetenzbereiche, Erfahrungsfelder, beruflichen Stationen und der LinkedIn-Link bleiben erhalten. Der Studien-Eintrag ist auf Nutzerwunsch entfernt. Die Navigation behält ihre Anker; der bisher nur auf Desktop vorhandene Kontakt ist auch im mobilen Menü erreichbar. Es wurden keine Kunden, Kennzahlen, Stationen, Kontakte oder Fotos erfunden. Die zwei ungenutzten Originalfotodateien bleiben in der Arbeitsübergabe erhalten, werden aber nicht veröffentlicht.
+Helle V6-Farbwelt, Kobaltblau/Limette, DM-Typografie, asymmetrischer Hero, Bogenformen, Abstände und Sektionen basieren weiterhin auf V6A. Die fachlichen Texte sind auf die oben dokumentierten Nutzerangaben konkretisiert. Alle Sektionen, die zwei beruflichen Stationen, die Bildauswahl und der LinkedIn-Link bleiben erhalten. Der Studien-Eintrag ist auf Nutzerwunsch entfernt. Die Navigation behält ihre Anker; der bisher nur auf Desktop vorhandene Kontakt ist auch im mobilen Menü erreichbar. Es wurden keine Kunden, Kennzahlen, Stationen, Kontakte oder Fotos erfunden. Die zwei ungenutzten Originalfotodateien bleiben in der Arbeitsübergabe erhalten, werden aber nicht veröffentlicht.
 
 Die Änderungen werden auf dem separaten GitHub-Branch `v6a-optimierung` bereitgestellt. Ein Hosting-Deployment ist nicht Bestandteil dieses Schritts. Die ursprünglichen vier Übergabedokumente und die ursprünglichen Referenzbilder wurden nicht überschrieben.

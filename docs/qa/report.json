@@ -69,26 +69,26 @@
   "metrics": {
     "320": {
       "cls": 0.21004444444444442,
-      "lcp": 296,
-      "heroFrames": 28,
+      "lcp": 304,
+      "heroFrames": 26,
       "resources": 13
     },
     "390": {
       "cls": 0,
-      "lcp": 1216,
+      "lcp": 1060,
       "heroFrames": 23,
       "resources": 13
     },
     "768": {
       "cls": 0.0556,
-      "lcp": 432,
-      "heroFrames": 23,
+      "lcp": 640,
+      "heroFrames": 26,
       "resources": 13
     },
     "1440": {
       "cls": 0.00024511561766573433,
-      "lcp": 620,
-      "heroFrames": 27,
+      "lcp": 588,
+      "heroFrames": 16,
       "resources": 13
     }
   }

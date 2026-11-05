@@ -9,6 +9,8 @@ Alle Bilder stammen aus dem abschließend bestandenen Chromium-Prüflauf auf dem
 - [Flip Stack · Feld 1](case-1-1440.png), [Feld 2](case-2-1440.png), [Feld 3](case-3-1440.png)
 - [Letztes Erfahrungsfeld · Smartphone](cases-last-390.png)
 - [Ripple im Hero](ripple-hero.png), [Ripple beim zweiten Foto](ripple-about.png)
+- [Arbeitsweise · Smartphone](arbeitsweise-390.png), [Tablet](arbeitsweise-768.png), [Desktop](arbeitsweise-1440.png)
+- [Geöffnete Arbeitsweise-Karte · Smartphone](work-card-390.png), [Tablet](work-card-768.png), [Desktop](work-card-1440.png)
 - [Maschinenlesbarer Prüfbericht](report.json)
 
 Der Ordner wird nicht veröffentlicht. Erläuterungen und Grenzen stehen im [Prüfbericht](../../PRUEFBERICHT.md).

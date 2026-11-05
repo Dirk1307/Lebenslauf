@@ -89,6 +89,9 @@ const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
     assert.equal(await page.getByRole('heading', { level:1, name:'Klar denken. Weiter machen.', exact:true }).count(), 1);
     const photoSources = await page.locator('img[src$=".webp"]').evaluateAll(images => images.map(i => i.getAttribute('src')));
     assert.deepEqual(photoSources, ['assets/hero-dirk.webp','assets/about-dirk.webp']);
+    assert.deepEqual(await page.locator('.hero-portrait img').evaluate(i=>[i.naturalWidth,i.naturalHeight]),[1000,667]);
+    assert.equal(await page.locator('main').innerText().then(text=>/Studium|Marketing Management|Fachlicher Einstieg/.test(text)),false);
+    assert.deepEqual(await page.locator('.career-line h3').allTextContents(),['Recruiting Guru','EKS Montage GmbH']);
     assert.equal(await page.evaluate(() => document.fonts.check('800 16px "DM Sans"') && document.fonts.check('italic 16px "DM Serif Display"')), true);
     await page.screenshot({path:path.join(results,`hero-${width}.png`)});
     if (width===390) {
@@ -127,13 +130,42 @@ const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
       await noOverflow(page);
       if (width!==320) await page.screenshot({path:path.join(results,`${id}-${width}.png`)});
     }
+    const stepNames=['01 / VERSTEHEN','02 / HINTERFRAGEN','03 / ENTWICKELN','04 / UMSETZEN'];
+    const dialog=page.getByRole('dialog');
     for (let step=0; step<4; step++) {
       const button=page.locator(`[data-step="${step}"]`);
       await button.focus(); await page.keyboard.press('Enter');
-      assert.equal(await button.getAttribute('aria-pressed'),'true');
-      assert.equal(await page.locator('[data-step][aria-pressed="true"]').count(),1);
-      assert.equal(await page.locator('#process-name').textContent(),['01 / VERSTEHEN','02 / HINTERFRAGEN','03 / ENTWICKELN','04 / UMSETZEN'][step]);
+      await dialog.waitFor({state:'visible'});
+      assert.equal(await button.getAttribute('aria-expanded'),'true');
+      assert.equal(await page.locator('[data-step][aria-expanded="true"]').count(),1);
+      assert.equal(await page.locator('#process-name').textContent(),stepNames[step]);
+      assert.equal(await page.locator('#process-description').textContent(),await page.locator(`#work-description-${step}`).textContent());
+      assert.equal(await page.evaluate(()=>document.activeElement.closest('dialog')?.open),true);
+      assert.equal(await page.evaluate(()=>document.body.style.overflow),'hidden');
+      if(step===0){
+        await page.waitForTimeout(450);
+        if(width!==320)await page.screenshot({path:path.join(results,`work-card-${width}.png`)});
+        for(let i=0;i<6;i++){
+          await page.keyboard.press(i===0?'Shift+Tab':'Tab');
+          assert.equal(await page.evaluate(()=>document.activeElement.closest('dialog')?.open),true);
+        }
+        if(width===390||width===1440)await audit(page,`${width}px geöffnete Arbeitsweise-Karte`);
+      }
+      if(step===3){
+        await page.getByRole('button',{name:'Nächster Schritt',exact:true}).click();
+        assert.equal(await page.locator('#process-name').textContent(),stepNames[0]);
+        await page.getByRole('button',{name:'Vorheriger Schritt',exact:true}).click();
+        assert.equal(await page.locator('#process-name').textContent(),stepNames[3]);
+      }
+      if(step===1)await page.getByRole('button',{name:'Details schließen',exact:true}).click();
+      else if(step===2)await page.mouse.click(2,80);
+      else await page.keyboard.press('Escape');
+      await page.locator('#work-step-dialog').waitFor({state:'hidden'});
+      assert.equal(await page.locator('[data-step][aria-expanded="true"]').count(),0);
+      assert.equal(await button.evaluate(el=>el===document.activeElement),true);
+      assert.notEqual(await page.evaluate(()=>document.body.style.overflow),'hidden');
     }
+    passed(`${width}px: vier Expandable Cards, Fokusbegrenzung/-rückgabe, Escape, Schließen, Hintergrundklick und Schrittwechsel`);
     if (width<=780) {
       await instantScroll(page,'#erfahrung');
       await page.locator('.cases-stage').focus();
@@ -228,14 +260,22 @@ const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
     passed(`Spätere PDF-Verknüpfung (${mode}): echter Download-Link ohne erfundene PDF`);
     await context.close();
   }
-  for(const mode of ['initial-reduced','no-observer','no-canvas']) {
-    const init=mode==='no-observer'?()=>{delete window.IntersectionObserver;}:mode==='no-canvas'?()=>{HTMLCanvasElement.prototype.getContext=()=>null;}:undefined;
+  for(const mode of ['initial-reduced','no-observer','no-canvas','no-dialog']) {
+    const init=mode==='no-observer'?()=>{delete window.IntersectionObserver;}:mode==='no-canvas'?()=>{HTMLCanvasElement.prototype.getContext=()=>null;}:mode==='no-dialog'?()=>{HTMLDialogElement.prototype.showModal=undefined;}:undefined;
     const {page,context}=await open({viewport:{width:1440,height:900},reducedMotion:mode==='initial-reduced'?'reduce':'no-preference'},init);
-    if(mode!=='no-canvas') {
+    if(mode==='initial-reduced'||mode==='no-observer') {
       assert.equal(await page.locator('.cascade-letter').evaluateAll(letters=>letters.every(l=>getComputedStyle(l).opacity==='1')),true);
       assert.equal(await page.locator('[data-reveal]').evaluateAll(els=>els.every(el=>getComputedStyle(el).opacity==='1')),true);
     }
     assert.equal(await page.locator('.hero-portrait img').isVisible(),true);
+    if(mode==='no-dialog')assert.equal(await page.locator('.process-step-description').evaluateAll(els=>els.every(el=>!el.hidden)),true);
+    if(mode==='initial-reduced'){
+      await page.locator('[data-step="0"]').click();
+      assert.equal(await page.getByRole('dialog').isVisible(),true);
+      assert.equal(await page.locator('#work-step-dialog').evaluate(el=>el.getAnimations().length),0);
+      await page.keyboard.press('Escape');
+      await page.locator('#work-step-dialog').waitFor({state:'hidden'});
+    }
     passed(`Fallback ${mode}: Bild sichtbar, keine Skriptfehler`);
     await context.close();
   }
@@ -283,6 +323,7 @@ const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
     assert.equal(await page.locator('.split-back').evaluateAll(els=>els.every(el=>getComputedStyle(el).position==='relative')),true);
     assert.equal(await page.getByRole('navigation').getByRole('link',{name:'Über mich'}).isVisible(),true);
     assert.equal(await page.locator('.case-card').evaluateAll(els=>els.every(el=>getComputedStyle(el).position==='relative')),true);
+    assert.equal(await page.locator('.process-step-description').evaluateAll(els=>els.length===4 && els.every(el=>!el.hidden)),true);
     passed(`${viewport.width}px ohne JavaScript: Navigation, Überschriften, Kompetenzen, drei Erfahrungsfelder lesbar`);
     await context.close();
   }
@@ -291,6 +332,23 @@ const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
     await noOverflow(page);
     assert.equal(await page.locator('.split-sticky').evaluate(el=>getComputedStyle(el).position),'static');
     passed(`${viewport.width}×${viewport.height}: Querformat / schmaler Zoom-Viewport ohne abgeschnittene Pin-Stufen`);
+    await context.close();
+  }
+  for(const width of [390,1440]){
+    const context=await browser.newContext({viewport:{width,height:900}}),page=await context.newPage();
+    page.on('pageerror',e=>failures.push(e.message));
+    page.on('console',m=>{if(m.type()==='error')failures.push(m.text());});
+    page.on('request',r=>{if(/^https?:/.test(r.url()))external.push(r.url());});
+    await page.setContent(await fs.readFile(path.join(root,'vorschau/Dirk_Herrmann_V6A_Vorschau.html'),'utf8'),{waitUntil:'load'});
+    await page.evaluate(()=>document.fonts.ready);
+    assert.equal(await page.locator('main').innerText().then(text=>/Studium|Marketing Management/.test(text)),false);
+    assert.deepEqual(await page.locator('.hero-portrait img').evaluate(i=>[i.naturalWidth,i.naturalHeight]),[1000,667]);
+    await page.locator('[data-step="2"]').click();
+    assert.equal(await page.getByRole('dialog').isVisible(),true);
+    assert.equal(await page.locator('#process-name').textContent(),'03 / ENTWICKELN');
+    await page.keyboard.press('Escape');
+    await page.locator('#work-step-dialog').waitFor({state:'hidden'});
+    passed(`${width}px: aktuelle Einzeldatei enthält das freigegebene Hero-Foto und funktionsfähige Arbeitsweise-Karten, ohne Netzwerkanfragen`);
     await context.close();
   }
   assert.deepEqual(failures,[],'Browser errors / CSP violations / HTTP failures');

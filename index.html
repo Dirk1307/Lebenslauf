@@ -11,6 +11,7 @@
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="assets/site.css">
 <script src="assets/site.js" defer></script>
+<script src="assets/work-card.js" defer></script>
 
 </head>
 <body>
@@ -36,7 +37,7 @@
    </div>
    <div class="hero-art" aria-label="Porträt Dirk Herrmann">
      <div class="hero-arch" aria-hidden="true"></div><div class="hero-arc" aria-hidden="true"></div>
-     <div class="hero-portrait ripple-wrap" data-component="image-ripple-effect"><img src="assets/hero-dirk.webp" width="1275" height="1700" alt="Dirk Herrmann im Portrait vor hellem Hintergrund" fetchpriority="high"><canvas class="portrait-ripple" aria-hidden="true"></canvas><canvas class="ripple-fallback" aria-hidden="true"></canvas><span class="photo-interaction-label hero-ripple-label">BEWEG DEINE MAUS ↗</span></div>
+     <div class="hero-portrait ripple-wrap" data-component="image-ripple-effect"><img src="assets/hero-dirk.webp" width="1000" height="667" alt="Dirk Herrmann lächelt mit verschränkten Armen vor einem Fenster" fetchpriority="high"><canvas class="portrait-ripple" aria-hidden="true"></canvas><canvas class="ripple-fallback" aria-hidden="true"></canvas><span class="photo-interaction-label hero-ripple-label">BEWEG DEINE MAUS ↗</span></div>
      <span class="orbit-star" aria-hidden="true">✳</span><span class="hero-paper-tag">NICE TO<br>MEET YOU <span>↗</span></span>
      <span class="hero-art-caption">MEHR ALS NUR EIN LEBENSLAUF / 2026</span>
    </div>
@@ -69,13 +70,48 @@
 </div><div class="cases-counter" aria-hidden="true">KARTE <span>01 / 03</span> · WEITERSCROLLEN ↓</div></div></div></section>
 <section class="details" id="arbeitsweise"><div class="wrap details-grid">
 <div data-reveal><div class="eyebrow">04 — So arbeite ich</div><h2 class="section-title cascade-target">Verstehen.<br><span class="serif">Besser machen.</span></h2><p class="sub">Vier Schritte, ein Anspruch: verstehen, was zählt – und daraus etwas entwickeln, das funktioniert.</p>
-<div class="process" role="group" aria-label="Die vier Schritte meiner Arbeitsweise"><button type="button" class="active" aria-controls="process-output" data-step="0" aria-pressed="true"><small>01</small><strong>Verstehen</strong><span>↗</span></button><button type="button" aria-controls="process-output" data-step="1" aria-pressed="false"><small>02</small><strong>Hinterfragen</strong><span>↗</span></button><button type="button" aria-controls="process-output" data-step="2" aria-pressed="false"><small>03</small><strong>Entwickeln</strong><span>↗</span></button><button type="button" aria-controls="process-output" data-step="3" aria-pressed="false"><small>04</small><strong>Umsetzen</strong><span>↗</span></button></div>
-<div class="process-output" id="process-output" aria-live="polite" aria-atomic="true"><strong id="process-name">01 / VERSTEHEN</strong><p id="process-description">Ziele, Bedürfnisse und Zusammenhänge erkennen, bevor ich ins Machen komme.</p></div>
+<ol class="process process-expandable" aria-label="Die vier Schritte meiner Arbeitsweise">
+ <li class="process-item work-art-0">
+  <button type="button" class="process-trigger" data-step="0" aria-controls="work-step-dialog" aria-expanded="false" aria-haspopup="dialog" aria-describedby="work-description-0" disabled>
+   <span class="process-visual" aria-hidden="true"></span><span class="process-label"><small>01 / ARBEITSWEISE</small><strong>Verstehen</strong></span><span class="process-open" aria-hidden="true">↗</span>
+  </button>
+  <p class="process-step-description" id="work-description-0">Ziele, Bedürfnisse und Zusammenhänge erkennen, bevor ich ins Machen komme.</p>
+ </li>
+ <li class="process-item work-art-1">
+  <button type="button" class="process-trigger" data-step="1" aria-controls="work-step-dialog" aria-expanded="false" aria-haspopup="dialog" aria-describedby="work-description-1" disabled>
+   <span class="process-visual" aria-hidden="true"></span><span class="process-label"><small>02 / ARBEITSWEISE</small><strong>Hinterfragen</strong></span><span class="process-open" aria-hidden="true">↗</span>
+  </button>
+  <p class="process-step-description" id="work-description-1">Annahmen prüfen und Chancen erkennen – denn bestehende Abläufe sind nicht automatisch die besten.</p>
+ </li>
+ <li class="process-item work-art-2">
+  <button type="button" class="process-trigger" data-step="2" aria-controls="work-step-dialog" aria-expanded="false" aria-haspopup="dialog" aria-describedby="work-description-2" disabled>
+   <span class="process-visual" aria-hidden="true"></span><span class="process-label"><small>03 / ARBEITSWEISE</small><strong>Entwickeln</strong></span><span class="process-open" aria-hidden="true">↗</span>
+  </button>
+  <p class="process-step-description" id="work-description-2">Aus Erkenntnissen realistische Konzepte und konkrete nächste Schritte ableiten.</p>
+ </li>
+ <li class="process-item work-art-3">
+  <button type="button" class="process-trigger" data-step="3" aria-controls="work-step-dialog" aria-expanded="false" aria-haspopup="dialog" aria-describedby="work-description-3" disabled>
+   <span class="process-visual" aria-hidden="true"></span><span class="process-label"><small>04 / ARBEITSWEISE</small><strong>Umsetzen</strong></span><span class="process-open" aria-hidden="true">↗</span>
+  </button>
+  <p class="process-step-description" id="work-description-3">Verantwortung übernehmen, Ergebnisse prüfen und pragmatisch nachjustieren.</p>
+ </li>
+</ol>
 </div>
-<div class="career" id="weg" data-reveal><div class="eyebrow">05 — Mein Weg</div><h2 class="section-title cascade-target">Mein <span class="serif">Werdegang.</span></h2><div class="career-list"><div class="career-line"><span class="date">Fachlicher Einstieg</span><h3>Marketing Management</h3><p>Studium und praktische Grundlagen in Marketing und Kommunikation.</p></div><div class="career-line"><span class="date">Agenturwelt</span><h3>Recruiting Guru</h3><p>Performance-Kampagnen, Kundenprojekte und Projektsteuerung.</p></div><div class="career-line"><span class="date">Unternehmensseite</span><h3>EKS Montage GmbH</h3><p>Employer Branding, Social Recruiting und digitale Kommunikation.</p></div></div></div>
+<div class="career" id="weg" data-reveal><div class="eyebrow">05 — Mein Weg</div><h2 class="section-title cascade-target">Mein <span class="serif">Werdegang.</span></h2><div class="career-list"><div class="career-line"><span class="date">Agenturwelt</span><h3>Recruiting Guru</h3><p>Performance-Kampagnen, Kundenprojekte und Projektsteuerung.</p></div><div class="career-line"><span class="date">Unternehmensseite</span><h3>EKS Montage GmbH</h3><p>Employer Branding, Social Recruiting und digitale Kommunikation.</p></div></div></div>
 </div></section>
 <section class="end end-fresh" id="kontakt"><div class="wrap end-grid"><div class="end-copy" data-reveal><div class="eyebrow">06 / LET'S CONNECT</div><h2 class="section-title cascade-target">Vielleicht passt es <span class="serif">einfach.</span></h2><p class="sub">Ich suche ein Umfeld, in dem ich mitdenken, Verantwortung übernehmen und gemeinsam mit anderen etwas bewegen kann. Lass uns sprechen.</p></div><div class="contact-action"><a class="btn btn-dark" href="https://www.linkedin.com/in/dirk-herrmann-6969b5236/" target="_blank" rel="noopener noreferrer">Auf LinkedIn vernetzen <span class="arrow">↗</span></a><span>OFFEN FÜR NEUE PERSPEKTIVEN ✳</span></div></div></section>
 </main>
+<dialog class="work-dialog" id="work-step-dialog" aria-labelledby="work-dialog-title" aria-describedby="process-description">
+ <div class="work-dialog-shell">
+  <div class="work-dialog-art" aria-hidden="true"><span class="work-dialog-number">01</span></div>
+  <button class="work-dialog-close" type="button" aria-label="Details schließen" autofocus>×</button>
+  <div class="work-dialog-copy">
+   <div class="work-dialog-information" aria-live="polite" aria-atomic="true"><p class="work-dialog-eyebrow" id="process-name"></p><h3 id="work-dialog-title"></h3><p id="process-description"></p></div>
+   <div class="work-dialog-nav" role="group" aria-label="Arbeitsweise-Schritt wechseln"><button type="button" class="work-dialog-prev" aria-label="Vorheriger Schritt"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5m7-7-7 7 7 7"/></svg></button><span class="work-dialog-count" aria-live="off"></span><button type="button" class="work-dialog-next" aria-label="Nächster Schritt"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></button></div>
+  </div>
+ </div>
+</dialog>
+
 <noscript><p class="wrap noscript-note">Alle Inhalte sind ohne JavaScript lesbar. Für die vier interaktiven Arbeitsweise-Schritte und Animationen bitte JavaScript aktivieren.</p></noscript>
 <footer class="footer"><div class="wrap footer-in"><span>© 2026 Dirk Herrmann · Persönliches Bewerbungsportfolio</span><span><a href="#start">Nach oben ↑</a> &nbsp;·&nbsp; <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/dirk-herrmann-6969b5236/">LinkedIn ↗</a></span></div></footer>
 </body>

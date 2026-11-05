@@ -6,10 +6,19 @@
 
 V6A enthält eine statische HTML-Seite mit mehreren aufeinander aufbauenden CSS-Ständen und drei eingebetteten Skriptblöcken. Die Effekte sind eigene Vanilla-JavaScript-Implementierungen; es wurden keine Componentry-/React-Komponenten importiert.
 
-## Gezielte Änderungen
+## Freigegebene Inhalts- und Komponentenänderungen
+
+- Hero-Foto auf ausdrücklichen Nutzerwunsch gegen das vorhandene Bild ohne Kappe und mit verschränkten Armen ausgetauscht. `hero-dirk.webp` entspricht bytegenau `portrait-smile.webp` aus der Übergabe; die Bildmaße sind jetzt 1000 × 667. Der Bogenrahmen und Ripple bleiben erhalten. Das neue Hero-Asset ist mit rund 40 KB deutlich kleiner als das vorherige Bild (rund 280 KB).
+- Die gesamte Studien-Station „Marketing Management / Studium und praktische Grundlagen …“ entfernt. Die beiden beruflichen Stationen bleiben unverändert; es wurde kein Ersatzabschluss ergänzt.
+- Arbeitsweise anhand der ausdrücklich verlinkten Watermelon Expandable Profile Card überarbeitet. Vier kompakte Karten öffnen eine größere Detailansicht, auf Desktop zweispaltig und mobil gestapelt. Bestehende vier Überschriften und Beschreibungen statt fremder Demo-Biografie. Lokale abstrakte SVGs statt weiterer Personenfotos.
+- Originalquelle im offiziellen Watermelon-Repository geprüft; Vanilla-Portierung statt eines React-/Motion-/Tailwind-Umbaus. MIT-Lizenz und genaue Quellenzuordnung sind enthalten. Der shadcn-CLI-Befehl wurde nicht als Installation ausgeführt. Einzelheiten: `docs/WATERMELON.md`.
+- Dialogbedienung mit Escape, Schließen-Button, Hintergrundklick, Tab-/Shift-Tab-Umlauf, Fokusrückgabe, vorherigem/nächstem Schritt, reduzierter Bewegung und lesbarem Fallback ohne JavaScript/`showModal()`.
+- Einzeldatei-Vorschau wird nun reproduzierbar aus dem aktuellen Projekt erzeugt und mitgetestet; neue Fotos und Inhalte sind damit auch im GitHub-Download enthalten.
+
+## Technische Verbesserungen der Ausgangsbasis
 
 - Vorhandenes CSS in `assets/site.css` und die überarbeiteten Skripte in `assets/site.js` ausgelagert. HTML bleibt die Inhaltsquelle; keine Komponentenarchitektur und kein Framework hinzugefügt. JavaScript lädt mit `defer`.
-- Die beiden aktiven WebP-Dateien und alle SVG-Illustrationen bleiben bytegenau erhalten. Die falschen Hero-HTML-Maße `1500×1000` auf die tatsächlichen `1275×1700` korrigiert. Hero lädt priorisiert, das zweite Foto verzögert.
+- Die Originalfotos werden unverändert verwendet; nur die ausdrücklich freigegebene Hero-Auswahl ist geändert. Alle SVG-Illustrationen und das Über-mich-Foto bleiben bytegenau erhalten. Intrinsische Bildmaße sind korrekt. Hero lädt priorisiert, das zweite Foto verzögert.
 - CSS-Konflikt `.ripple-wrap` / `.hero-portrait` korrigiert: Das Foto sitzt wieder absolut im bereits vorgesehenen Bogenrahmen, statt rechts/unten überzulaufen. Die bestehenden Insets, `object-position` und der Hero-Zoom bleiben erhalten.
 - Den geerbten oberen Abstand am Hero-Mauslabel aufgehoben. Dadurch bleibt der Hinweis eine kleine Kapsel und zieht keine dunkle Fläche über das Gesicht. Ein leeres Alt-Badge am zweiten Foto entfernt. Die Kompetenz-Hintergrundgrafik liegt hinter den Texten.
 - DM Sans und DM Serif Display lokal bereitgestellt, einschließlich Fontlizenzen. Ein kleines lizenziertes DejaVu-Symbol-Subset verhindert fehlende Pfeile und grüne Emoji-Sterne in Browsern mit anderer Schrift-Fallback-Auswahl. Die Symbole folgen wieder den bestehenden Textfarben.
@@ -23,6 +32,6 @@ V6A enthält eine statische HTML-Seite mit mehreren aufeinander aufbauenden CSS-
 
 ## Bewahrt
 
-Helle V6-Farbwelt, Kobaltblau/Limette, DM-Typografie, asymmetrischer Hero, Bogenformen, Abstände und Sektionen basieren weiterhin auf V6A. Alle bisherigen fachlichen Texte, Kompetenzbereiche, Erfahrungsfelder, Lebenslaufstationen und der LinkedIn-Link bleiben erhalten. Die Navigation behält ihre Anker; der bisher nur auf Desktop vorhandene Kontakt ist auch im mobilen Menü erreichbar. Es wurden keine Kunden, Kennzahlen, Stationen, Kontakte oder Fotos erfunden. Die zwei ungenutzten Originalfotodateien bleiben in der Arbeitsübergabe erhalten, werden aber nicht veröffentlicht.
+Helle V6-Farbwelt, Kobaltblau/Limette, DM-Typografie, asymmetrischer Hero, Bogenformen, Abstände und Sektionen basieren weiterhin auf V6A. Alle übrigen fachlichen Texte, Kompetenzbereiche, Erfahrungsfelder, beruflichen Stationen und der LinkedIn-Link bleiben erhalten. Der Studien-Eintrag ist auf Nutzerwunsch entfernt. Die Navigation behält ihre Anker; der bisher nur auf Desktop vorhandene Kontakt ist auch im mobilen Menü erreichbar. Es wurden keine Kunden, Kennzahlen, Stationen, Kontakte oder Fotos erfunden. Die zwei ungenutzten Originalfotodateien bleiben in der Arbeitsübergabe erhalten, werden aber nicht veröffentlicht.
 
 Die Änderungen werden auf dem separaten GitHub-Branch `v6a-optimierung` bereitgestellt. Ein Hosting-Deployment ist nicht Bestandteil dieses Schritts. Die ursprünglichen vier Übergabedokumente und die ursprünglichen Referenzbilder wurden nicht überschrieben.

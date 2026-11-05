@@ -58,24 +58,6 @@
       });
     }
   }
-  const steps = [
-    ['01 / VERSTEHEN', 'Ziele, Bedürfnisse und Zusammenhänge erkennen, bevor ich ins Machen komme.'],
-    ['02 / HINTERFRAGEN', 'Annahmen prüfen und Chancen erkennen – denn bestehende Abläufe sind nicht automatisch die besten.'],
-    ['03 / ENTWICKELN', 'Aus Erkenntnissen realistische Konzepte und konkrete nächste Schritte ableiten.'],
-    ['04 / UMSETZEN', 'Verantwortung übernehmen, Ergebnisse prüfen und pragmatisch nachjustieren.']
-  ];
-  document.querySelectorAll('[data-step]').forEach((button, index) => {
-    button.addEventListener('click', () => {
-      document.querySelectorAll('[data-step]').forEach(el => {
-        const active = el === button;
-        el.classList.toggle('active', active);
-        el.setAttribute('aria-pressed', String(active));
-      });
-      document.getElementById('process-name').textContent = steps[index][0];
-      document.getElementById('process-description').textContent = steps[index][1];
-    });
-  });
-
   // Hide content only after its observer is installed. No JS / no observer = readable.
   if (!motion.matches && 'IntersectionObserver' in window) {
     const observer = new IntersectionObserver(entries => entries.forEach(entry => {

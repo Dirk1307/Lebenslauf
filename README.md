@@ -2,11 +2,25 @@
 
 Diese Website entwickelt die gelieferte V6A weiter. HTML, Inhalte, Reihenfolge, Farben, Typografie und die fünf vorhandenen Effekte bilden weiterhin die Basis. Kein Framework, Backend oder externer Dienst ist zum Betrieb erforderlich.
 
+## Aktueller Inhaltsstand
+
+- Hero: das ausdrücklich gewählte Originalfoto **ohne Kappe, mit verschränkten Armen** (`portrait-smile.webp`, unverändert nach `hero-dirk.webp` übernommen). Das zweite Foto zeigt weiterhin auf die Kamera. Es bleiben genau zwei Personenfotos.
+- Die Studien-Station „Marketing Management“ ist aus dem Werdegang entfernt. Recruiting Guru und EKS Montage GmbH bleiben erhalten.
+- Die vier Arbeitsweise-Schritte öffnen sich als **Expandable Cards** mit Detailansicht nach der gewünschten Watermelon-Vorlage. Die bestehenden Beschreibungen und die V6-Farbwelt bleiben erhalten. Die Vanilla-Portierung, Originalquelle und MIT-Lizenz sind in [docs/WATERMELON.md](docs/WATERMELON.md) dokumentiert.
+
 ## Vorschau ohne Installation
 
 Auf GitHub den Branch `v6a-optimierung` auswählen und über **Code → Download ZIP** herunterladen. Die GitHub-Dateiansicht zeigt den HTML-Quelltext; für die interaktive Vorschau die ZIP entpacken und die folgende Datei lokal im Browser öffnen.
 
 Die Datei `vorschau/Dirk_Herrmann_V6A_Vorschau.html` enthält die Website einschließlich Bildern, Schriftarten und Animationen in einer einzigen Datei. Nach dem Herunterladen des Repositorys die ZIP vollständig entpacken und diese HTML-Datei im Browser öffnen. Dafür sind weder Python noch Node.js erforderlich. Die Datei ist eine separate Prüffassung; bearbeitet werden weiterhin `index.html` und `assets/`. Sie wird nicht durch die Hosting-Konfiguration veröffentlicht.
+
+Nach Änderungen lässt sich die Einzeldatei aus den aktuellen Quellen neu erzeugen:
+
+```sh
+node scripts/prepare-preview.cjs
+```
+
+Der Browser-Test erzeugt sie ebenfalls neu und prüft die Karten darin. Die Datei nicht separat bearbeiten.
 
 ## Lokal starten
 
@@ -22,11 +36,12 @@ Dann im Browser `http://localhost:8000` öffnen. Mit `Strg+C` beenden. Für die 
 
 - `index.html`: vorhandene Inhalte, Bilder, Navigation und PDF-Konfiguration.
 - `assets/site.css`: ursprüngliche V6A-Stile in derselben Reihenfolge; technische Korrekturen am Ende.
-- `assets/site.js`: Navigation, Arbeitsweise und die fünf Animationen, ohne Bibliothek zur Laufzeit.
-- `assets/hero-dirk.webp` und `assets/about-dirk.webp`: die zwei unveränderten Personenfotos.
+- `assets/site.js`: Navigation und die fünf bisherigen Animationen, ohne Bibliothek zur Laufzeit.
+- `assets/work-card.js`: aufklappbare Arbeitsweise-Karten mit modalem Dialog und Tastatursteuerung.
+- `assets/hero-dirk.webp` und `assets/about-dirk.webp`: die zwei ausgewählten Original-Personenfotos; die Hero-Auswahl wurde auf Nutzerwunsch geändert.
 - `assets/fonts/`: DM Sans, DM Serif Display und ein kleines monochromes Symbol-Subset inklusive Lizenzen. Keine Verbindung zu Google Fonts.
 - `AENDERUNGEN.md` und `PRUEFBERICHT.md`: Änderungen, Testergebnisse und Grenzen.
-- Die vier ursprünglichen Übergabedokumente und `referenzen/` bleiben als Ausgangsdokumentation erhalten.
+- Die vier ursprünglichen Übergabedokumente und `referenzen/` bleiben als Ausgangsdokumentation erhalten. Für spätere freigegebene Änderungen gelten der aktuelle Inhaltsstand hier und `AENDERUNGEN.md`.
 
 ## Den echten Lebenslauf später ergänzen
 

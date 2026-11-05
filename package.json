@@ -5,8 +5,9 @@
   "description": "Bestehende statische Bewerbungswebsite V6A; kein Build erforderlich.",
   "scripts": {
     "start": "python3 -m http.server 8000 --bind 127.0.0.1",
-    "test": "node scripts/prepare-deploy.cjs && node tests/site.cjs",
-    "build": "node scripts/prepare-deploy.cjs"
+    "test": "node scripts/prepare-deploy.cjs && node scripts/prepare-preview.cjs && node tests/site.cjs",
+    "build": "node scripts/prepare-deploy.cjs",
+    "preview:file": "node scripts/prepare-preview.cjs"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.11.1",

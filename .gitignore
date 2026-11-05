@@ -1,0 +1,6 @@
+node_modules/
+test-results/
+.vercel/
+.netlify/
+.DS_Store
+dist/

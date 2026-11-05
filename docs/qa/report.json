@@ -1,0 +1,78 @@
+{
+  "checks": [
+    "390px: mobiles Menü, Tastatur, Escape und Kontaktanker",
+    "Smartphone normale Bewegung: axe WCAG A/AA, keine automatischen Verstöße",
+    "Smartphone reduzierte Bewegung: axe WCAG A/AA, keine automatischen Verstöße",
+    "390px: kein horizontaler Überlauf, Bilder, Überschriften, CTAs, vier Arbeitsweise-Schritte",
+    "768px: mobiles Menü, Tastatur, Escape und Kontaktanker",
+    "768px: kein horizontaler Überlauf, Bilder, Überschriften, CTAs, vier Arbeitsweise-Schritte",
+    "Beide Fotos: WebGL-Ripple reagiert, rendert fehlerfrei und stoppt im Ruhezustand",
+    "Desktop: Split-Flip endet lesbar, Flip Stack erreicht alle drei Erfahrungsfelder",
+    "Hero zeichnet außerhalb des Sichtfelds keine weiteren Frames",
+    "Desktop normale Bewegung: axe WCAG A/AA, keine automatischen Verstöße",
+    "Desktop reduzierte Bewegung: axe WCAG A/AA, keine automatischen Verstöße",
+    "Nachträgliches prefers-reduced-motion: statische, vollständig lesbare Inhalte",
+    "1440px: kein horizontaler Überlauf, Bilder, Überschriften, CTAs, vier Arbeitsweise-Schritte",
+    "320px: mobiles Menü, Tastatur, Escape und Kontaktanker",
+    "320px: kein horizontaler Überlauf, Bilder, Überschriften, CTAs, vier Arbeitsweise-Schritte",
+    "Spätere PDF-Verknüpfung (data-url): echter Download-Link ohne erfundene PDF",
+    "Spätere PDF-Verknüpfung (plain-link): echter Download-Link ohne erfundene PDF",
+    "Fallback initial-reduced: Bild sichtbar, keine Skriptfehler",
+    "Fallback no-observer: Bild sichtbar, keine Skriptfehler",
+    "Fallback no-canvas: Bild sichtbar, keine Skriptfehler",
+    "WebGL deaktiviert: 2D-Ripple auf beiden Fotos, Originalbilder bleiben sichtbar",
+    "WebGL-Kontextverlust: Originalfoto bleibt sichtbar",
+    "390px ohne JavaScript: Navigation, Überschriften, Kompetenzen, drei Erfahrungsfelder lesbar",
+    "1440px ohne JavaScript: Navigation, Überschriften, Kompetenzen, drei Erfahrungsfelder lesbar",
+    "844×390: Querformat / schmaler Zoom-Viewport ohne abgeschnittene Pin-Stufen",
+    "720×450: Querformat / schmaler Zoom-Viewport ohne abgeschnittene Pin-Stufen",
+    "Keine JavaScript-/Konsolenfehler, HTTP-Fehler, CSP-Verstöße oder externen Ressourcenanfragen"
+  ],
+  "browsers": [
+    "155.0.8059.79"
+  ],
+  "violations": [
+    {
+      "label": "Smartphone normale Bewegung",
+      "violations": []
+    },
+    {
+      "label": "Smartphone reduzierte Bewegung",
+      "violations": []
+    },
+    {
+      "label": "Desktop normale Bewegung",
+      "violations": []
+    },
+    {
+      "label": "Desktop reduzierte Bewegung",
+      "violations": []
+    }
+  ],
+  "metrics": {
+    "320": {
+      "cls": 0.0006625311007323088,
+      "lcp": 316,
+      "heroFrames": 27,
+      "resources": 8
+    },
+    "390": {
+      "cls": 0,
+      "lcp": 376,
+      "heroFrames": 27,
+      "resources": 8
+    },
+    "768": {
+      "cls": 0.0005579781708893952,
+      "lcp": 488,
+      "heroFrames": 26,
+      "resources": 8
+    },
+    "1440": {
+      "cls": 0,
+      "lcp": 2096,
+      "heroFrames": 18,
+      "resources": 9
+    }
+  }
+}

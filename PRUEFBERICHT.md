@@ -2,6 +2,14 @@
 
 Stand: 5. November 2026. Geprüft wurde die vorhandene Website nach den gezielten technischen Änderungen und den freigegebenen Inhaltsanpassungen: Hero ohne Kappe/mit verschränkten Armen, entfernter Studien-Eintrag, Expandable Cards im Bereich Arbeitsweise sowie die anhand der Nutzerkorrekturen und des Lebenslaufs überarbeiteten Texte und sieben unterschiedliche Illustrationen in Abschnitt 03/04.
 
+## Ergänzung · 6. November 2026: Begrüßung und Kontakt
+
+Die Begrüßung steht jetzt als „Hi, ich bin Dirk.“ auf dem Schild am Hero-Porträt. Die E-Mail-Adresse aus dem Lebenslauf ist im Kontaktbereich sichtbar und per `mailto:` verlinkt; eine Telefonnummer wurde nicht ergänzt.
+
+Gezielte Browserprüfung mit der vorhandenen Content Security Policy bei **320, 390, 768 und 1440 × 900 Pixeln**: Begrüßung und E-Mail sichtbar, Schild und Adresse innerhalb der Bildschirmbreite, keine horizontale Scrollleiste, E-Mail-Link per Tastatur erreichbar und mindestens 44 px hoch. LinkedIn bleibt vorhanden. Die Kontaktadresse und das `mailto:`-Ziel stimmen überein; es wurde keine E-Mail versendet. Alle vier axe-Prüfungen der betroffenen Bereiche melden keine Verstöße gegen die geprüften WCAG-A/AA-Regeln. Auch die aktualisierte Einzeldatei enthält Begrüßung und E-Mail-Link. Keine Browser-, HTTP- oder CSP-Fehler.
+
+Ergebnisse und Screenshots: `docs/qa/contact-update/`. Der nachfolgende vollständige Regressionsbericht mit 36 Prüfgruppen dokumentiert den vorherigen Stand; diese kleine Text-/Kontaktänderung wurde gezielt geprüft, ohne die unveränderten Interaktionssuiten erneut auszuführen.
+
 ## Durchführung
 
 `CHROMIUM_PATH=/usr/bin/chromium npm test` prüft das mit `scripts/prepare-deploy.cjs` erzeugte Veröffentlichungspaket über einen lokalen HTTP-Server. Der Server liefert die vorgesehene Content Security Policy mit aus. Werkzeuge: Playwright 1.58.2, Chromium 155 und axe-core 4.11.1. WebGL läuft im Headless-Test über Software-Rendering.

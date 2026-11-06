@@ -4,6 +4,9 @@ Diese Website entwickelt die gelieferte V6A weiter. HTML, Inhalte, Reihenfolge, 
 
 ## Aktueller Inhaltsstand
 
+- Die Begrüßung „Hi, ich bin Dirk.“ steht beim limettengrünen Schild am Hero-Foto, nicht mehr über der großen Überschrift.
+- Im Kontaktbereich ist die freigegebene Adresse `dirk.herrmann@yahoo.de` als direkter E-Mail-Link ergänzt. LinkedIn bleibt erhalten. Eine Telefonnummer wird derzeit nicht öffentlich angezeigt.
+
 Die Positionierung richtet sich auf **Marketing, Performance Marketing, Marketingstrategie, Social Media Marketing und Projektmanagement**. Die Texte verwenden die vom Nutzer bestätigten Aufgaben bei Recruiting Guru und EKS Montage. Allgemeine fachliche Schwerpunkte sind Meta Ads, Creatives, Landingpages und Bewerbungsfunnels, LinkedIn/Instagram/Facebook, Content, KPI-Analyse, Budgetverwaltung sowie Projektkoordination. Arbeitgebernamen stehen ausschließlich im Werdegang; konkrete Kundenzahlen werden auf der Seite nicht genannt. Nicht genannte Daten, Ergebnisse, Tools oder Qualifikationen werden nicht ergänzt.
 
 - Hero-Text: Der ursprüngliche Wortlaut „Strategisch im Kopf. Kreativ in der Umsetzung. Ich verbinde Marketing, digitale Ideen und Projektarbeit – mit dem Anspruch, Dinge wirklich voranzubringen.“ ist auf Nutzerwunsch wiederhergestellt.
@@ -109,7 +112,7 @@ python3 -m http.server 8000 --bind 127.0.0.1 --directory dist
 
 Beide Konfigurationen sind lokal geprüft, aber noch nicht bei einem Hostinganbieter ausgeführt. Nach dem ersten Deployment Bilder, Schriftarten, alle Anker, Sicherheitsheader und gegebenenfalls den echten PDF-Download auf der öffentlichen URL erneut prüfen. Die HTML-/CSS-/JS-Cache-Regeln erlauben Aktualisierungen; Bilder und Fonts werden einen Tag zwischengespeichert.
 
-Vor öffentlicher Bereitstellung bleiben die bereits in der Übergabe genannten rechtlichen Angaben und Datenschutzhinweise zu prüfen. Es wurden keine Kontaktangaben erfunden oder ergänzt. Der bestehende LinkedIn-Link ist unverändert und wird erst beim Anklicken extern geöffnet.
+Vor öffentlicher Bereitstellung bleiben die bereits in der Übergabe genannten rechtlichen Angaben und Datenschutzhinweise zu prüfen. Es wurden keine Kontaktangaben erfunden. Die E-Mail-Adresse wurde auf ausdrücklichen Nutzerwunsch aus dem bereitgestellten Lebenslauf übernommen. Der bestehende LinkedIn-Link ist unverändert und wird erst beim Anklicken extern geöffnet.
 
 ## QR-Code später
 

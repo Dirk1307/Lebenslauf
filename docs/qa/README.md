@@ -1,5 +1,16 @@
 # Sichtprüfung und Testdaten
 
+## Aktuelle Ergänzung · 6. November 2026
+
+Begrüßung am Hero-Foto und sichtbarer E-Mail-Kontakt, gezielt bei vier Bildschirmbreiten geprüft:
+
+- Hero: [320 px](contact-update/hero-320.png), [390 px](contact-update/hero-390.png), [768 px](contact-update/hero-768.png), [1440 px](contact-update/hero-1440.png)
+- Kontakt: [320 px](contact-update/kontakt-320.png), [390 px](contact-update/kontakt-390.png), [768 px](contact-update/kontakt-768.png), [1440 px](contact-update/kontakt-1440.png)
+- [Prüfdaten dieser Ergänzung](contact-update/report.json)
+
+## Vorheriger vollständiger Prüflauf · 5. November 2026
+
+
 Alle Bilder stammen aus dem abschließend bestandenen Chromium-Prüflauf auf dem optimierten V6A-Stand mit ursprünglichem Hero-Text, lebenslaufbasiertem Werdegang und sieben unterschiedlichen Illustrationen in Abschnitt 03/04. Smartphone-Ansichten sind Emulationen.
 
 - [Hero · Smartphone 390 px](hero-390.png)

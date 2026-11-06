@@ -6,6 +6,13 @@
 
 V6A enthält eine statische HTML-Seite mit mehreren aufeinander aufbauenden CSS-Ständen und drei eingebetteten Skriptblöcken. Die Effekte sind eigene Vanilla-JavaScript-Implementierungen; es wurden keine Componentry-/React-Komponenten importiert.
 
+## Begrüßung und E-Mail-Kontakt · 6. November 2026
+
+- Begrüßungszeile über dem Hero-Titel entfernt. „Hi, ich bin Dirk.“ ergänzt das vorhandene „NICE TO MEET YOU“-Schild direkt beim Porträt.
+- Auf ausdrücklichen Nutzerwunsch die E-Mail-Adresse aus dem bereitgestellten Lebenslauf im Kontaktbereich sichtbar und als `mailto:` verlinkt. Es wird keine E-Mail automatisch versendet; der Link öffnet die vom Besucher eingerichtete E-Mail-Anwendung.
+- Telefonnummer vorerst nicht ergänzt, da der Nutzer dazu noch unentschieden ist. Die Empfehlung lautet, öffentlich E-Mail und LinkedIn zu verwenden und die Nummer bei Bedarf im direkten Austausch weiterzugeben.
+- Die Hauptseite und die neu erzeugte Einzeldatei wurden gezielt bei 320, 390, 768 und 1440 Pixeln auf Darstellung, Linkziel, Tastaturzugang und Barrierefreiheit geprüft. Interaktionsskripte und Bilder bleiben unverändert.
+
 ## Aktuelle redaktionelle Korrekturen und Bildauswahl
 
 - Den ausdrücklich gewünschten ursprünglichen Hero-Text wortgleich wiederhergestellt.

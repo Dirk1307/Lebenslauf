@@ -1,0 +1,39 @@
+{
+  "date": "2026-11-06",
+  "browser": "155.0.8059.79",
+  "viewports": [
+    {
+      "width": 320,
+      "height": 900,
+      "greeting": "visible at portrait",
+      "email": "visible, mailto and keyboard focus verified",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "width": 390,
+      "height": 900,
+      "greeting": "visible at portrait",
+      "email": "visible, mailto and keyboard focus verified",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "width": 768,
+      "height": 900,
+      "greeting": "visible at portrait",
+      "email": "visible, mailto and keyboard focus verified",
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "greeting": "visible at portrait",
+      "email": "visible, mailto and keyboard focus verified",
+      "overflow": false,
+      "violations": []
+    }
+  ],
+  "errors": []
+}

@@ -6,6 +6,12 @@
 
 V6A enthält eine statische HTML-Seite mit mehreren aufeinander aufbauenden CSS-Ständen und drei eingebetteten Skriptblöcken. Die Effekte sind eigene Vanilla-JavaScript-Implementierungen; es wurden keine Componentry-/React-Komponenten importiert.
 
+## Foto-Hinweise entfernt · 6. November 2026
+
+- Die beiden sichtbaren „BEWEG DEINE MAUS“-Hinweise am Hero- und Über-mich-Foto entfernt.
+- Ripple-Effekte, persönliche Bildtexte und Porträts bleiben erhalten; die Einzeldatei wird aus der bereinigten Hauptseite neu erzeugt.
+- Gezielt bei 390 und 1440 Pixeln geprüft: keine Hinweise, kein horizontaler Überlauf; beide Ripple-Effekte reagieren weiterhin auf Mausbewegungen. Auch die Einzeldatei enthält keine Hinweise; keine JavaScript-Fehler.
+
 ## Lebenslauf als Download · 6. November 2026
 
 - Auf Nutzerwunsch eine separate Website-Version des bereitgestellten Lebenslaufs ohne Telefonnummer erstellt. Original-PDF unverändert erhalten; bereinigte Version liegt unter `assets/lebenslauf-dirk-herrmann.pdf`.

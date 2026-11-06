@@ -1,0 +1,31 @@
+{
+  "website": "https://lebenslauf-xi.vercel.app/",
+  "qr": {
+    "url": "https://lebenslauf-xi.vercel.app/",
+    "width": 984,
+    "height": 984
+  },
+  "share_image": {
+    "width": 1200,
+    "height": 630
+  },
+  "files": {
+    "dirk-herrmann.vcf": {
+      "bytes": 245,
+      "sha256": "ca969da9e51629e19466914850a15218a5441961be399cee4e174d4312383a9d"
+    },
+    "dirk-herrmann-vorschau.png": {
+      "bytes": 238964,
+      "sha256": "8160b1f2772098f4bcf5a7aba44e307907798f3990e841f840282bfc363c1153"
+    },
+    "qr-dirk-herrmann.png": {
+      "bytes": 7368,
+      "sha256": "fd196856c5a5c4411c33ab6e81de14a4ddd3343340a1898f7e01d618984b6312"
+    },
+    "qr-dirk-herrmann.svg": {
+      "bytes": 2088,
+      "sha256": "7be5079560e59ef33703a9baa9c2f69c3739212fb98f65342360368a1286b0b2"
+    }
+  },
+  "original_photos_and_phone_free_cv_unchanged": true
+}

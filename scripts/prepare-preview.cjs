@@ -2,7 +2,7 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const root = path.resolve(__dirname, '..');
-const mime = { '.webp':'image/webp', '.svg':'image/svg+xml', '.woff':'font/woff', '.woff2':'font/woff2', '.pdf':'application/pdf' };
+const mime = { '.webp':'image/webp', '.svg':'image/svg+xml', '.woff':'font/woff', '.woff2':'font/woff2', '.pdf':'application/pdf', '.vcf':'text/vcard' };
 function dataUri(file) {
   return `data:${mime[path.extname(file)] || 'application/octet-stream'};base64,${fs.readFileSync(file).toString('base64')}`;
 }
@@ -28,6 +28,9 @@ html = html.replace(/<use href="(assets\/illustrations\/[^"<>]+\.svg)"><\/use>/g
   return inner[1];
 });
 html = html.replace(/(src|href)="(assets\/[^"<>]+)"/g, (match, attr, file) => `${attr}="${dataUri(path.join(root, file))}"`);
+// Data-URL navigation is restricted by browsers; the offline copy downloads its
+// embedded vCard. The hosted link leaves the native iOS contact preview available.
+html = html.replace(/<a class="contact-save"([^>]*)>/, '<a class="contact-save"$1 download="Dirk-Herrmann.vcf">');
 // All resources are already embedded; eager loading makes offline checks predictable.
 html = html.replaceAll('loading="lazy"', 'loading="eager"');
 const licenseFiles = [

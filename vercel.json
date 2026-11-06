@@ -63,6 +63,23 @@
       ]
     },
     {
+      "source": "/assets/dirk-herrmann.vcf",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/vcard; charset=utf-8"
+        },
+        {
+          "key": "Content-Disposition",
+          "value": "inline; filename=\"Dirk-Herrmann.vcf\""
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    },
+    {
       "source": "/assets/lebenslauf-dirk-herrmann.pdf",
       "headers": [
         {

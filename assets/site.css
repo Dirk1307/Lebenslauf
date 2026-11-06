@@ -601,3 +601,8 @@ body{padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-ri
  .hero-fresh .hero-art{height:280px}
  .case-controls{gap:10px}.case-pagination{gap:0}
 }
+
+/* Native contact file: the same quiet secondary-link style as the existing CV. */
+.contact-save{display:inline-flex;align-items:center;justify-content:space-between;gap:18px;min-height:44px;padding:8px 0;color:#192131;border-bottom:1px solid #596547;font-size:14px;font-weight:700}
+@media(hover:hover) and (pointer:fine){.contact-save:hover{color:#263bbd;border-color:currentColor}}
+@media(max-width:780px){.contact-save{min-height:48px;font-size:16px}}

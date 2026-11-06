@@ -5,14 +5,19 @@
   "description": "Bestehende statische Bewerbungswebsite V6A; kein Build erforderlich.",
   "scripts": {
     "start": "python3 -m http.server 8000 --bind 127.0.0.1",
-    "test": "node scripts/prepare-deploy.cjs && node scripts/prepare-preview.cjs && node tests/site.cjs && node tests/mobile.cjs",
+    "test": "node scripts/prepare-deploy.cjs && node scripts/prepare-preview.cjs && node tests/site.cjs && node tests/mobile.cjs && node tests/business-card.cjs",
+    "test:card": "node scripts/prepare-deploy.cjs && node scripts/prepare-preview.cjs && node tests/business-card.cjs",
     "test:mobile": "node scripts/prepare-deploy.cjs && node scripts/prepare-preview.cjs && node tests/mobile.cjs",
     "build": "node scripts/prepare-deploy.cjs",
     "preview:file": "node scripts/prepare-preview.cjs",
+    "card:prepare": "node scripts/prepare-card-assets.cjs && node scripts/prepare-preview.cjs",
     "skills:restore": "npx --yes skills@1.7.6 experimental_install --frozen-lockfile"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.11.1",
-    "playwright": "1.58.2"
+    "jsqr": "1.4.0",
+    "playwright": "1.58.2",
+    "pngjs": "7.0.0",
+    "qrcode": "1.5.4"
   }
 }

@@ -22,6 +22,12 @@ Die Kompetenzkarten zeigen auf kleinen Bildschirmen wieder ihre Bildvorderseiten
 
 Sieben Inline-SVG-Motive ersetzen externe SVG-`use`-Verweise, um die gemeldeten iPhone-/Safari-Bildprobleme zu vermeiden. Mobile Fließtexte sind mindestens 16 px groß, wichtige Schaltflächen mindestens 44 px hoch; die Darstellung berücksichtigt sichere Bildschirmränder und dynamische Viewport-Höhen.
 
+## Digitale Visitenkarte
+
+Die aktuelle Website-Adresse ist `https://lebenslauf-xi.vercel.app/`. Ein QR-Code als PNG und SVG, eine vCard ohne Telefonnummer und ein eigenes Link-Vorschaubild sind enthalten. „Kontakt speichern“ im Kontaktbereich öffnet die Kontaktdatei. Die Website hat passende Open-Graph-/Twitter-Card-Metadaten sowie eine Canonical-Adresse. Dateien, Verwendung und Pflege: [docs/DIGITALE_VISITENKARTE.md](docs/DIGITALE_VISITENKARTE.md).
+
+`site-profile.json` hält die bestätigte Adresse und Kontaktdaten fest. `CHROMIUM_PATH=/usr/bin/chromium npm run card:prepare` erzeugt die vorbereiteten Dateien neu. Der Hosting-Build benötigt diese Entwicklungswerkzeuge nicht; er kopiert die bereits erzeugten statischen Dateien.
+
 ## Vorschau ohne Installation
 
 Auf GitHub den Branch `v6a-optimierung` auswählen und über **Code → Download ZIP** herunterladen. Die GitHub-Dateiansicht zeigt den HTML-Quelltext; für die interaktive Vorschau die ZIP entpacken und die folgende Datei lokal im Browser öffnen.
@@ -53,6 +59,7 @@ Dann im Browser `http://localhost:8000` öffnen. Mit `Strg+C` beenden. Für die 
 - `assets/site.js`: Navigation und die fünf bisherigen Animationen, ohne Bibliothek zur Laufzeit.
 - `assets/work-card.js`: aufklappbare Arbeitsweise-Karten mit modalem Dialog und Tastatursteuerung.
 - `assets/mobile-interactions.js`: Tipp-Variante der vorhandenen Kompetenzkarten und Touch-/Tastaturnavigation der Erfahrungsfelder.
+- `assets/dirk-herrmann.vcf`, `assets/qr-dirk-herrmann.png` / `.svg`, `assets/dirk-herrmann-vorschau.png`: Kontaktdatei, QR-Code und Link-Vorschaubild.
 - `assets/hero-dirk.webp` und `assets/about-dirk.webp`: die zwei ausgewählten Original-Personenfotos; die Hero-Auswahl wurde auf Nutzerwunsch geändert.
 - `assets/illustrations/`: sieben unterschiedliche SVG-Motive für Erfahrungsfelder und Arbeitsweise, mit Quellenmanifest.
 - `assets/fonts/`: DM Sans, DM Serif Display und ein kleines monochromes Symbol-Subset inklusive Lizenzen. Keine Verbindung zu Google Fonts.
@@ -96,6 +103,8 @@ Der Test startet seinen eigenen lokalen Server mit der vorgesehenen Content Secu
 
 `npm test` führt auch die zusätzliche Touch-Suite aus. Für deren gezielte Wiederholung: `CHROMIUM_PATH=/usr/bin/chromium npm run test:mobile`. Sie prüft 320, 375, 390 und 430 px breite Touch-Ansichten, wirkliche synthetisierte Wisch-/Tipp-Eingaben, alle Karten und sichtbare SVG-Pixel. Das ist Chromium-Emulation und kein Nachweis eines Tests mit physischem iPhone/Safari.
 
+Die Karten-Suite gehört ebenfalls zu `npm test`; einzeln: `CHROMIUM_PATH=/usr/bin/chromium npm run test:card`. Sie prüft QR-Decodierung, Kontaktdatei, echte Downloads und die Link-Vorschau-Metadaten.
+
 ## Design- und Animations-Skills
 
 Taste, Impeccable und die Emil-Kowalski-Skills sind projektlokal für Codex installiert und auf die vorhandenen Interaktionen angewendet. Nach einem neuen Checkout stellt `npm run skills:restore` die in `skills-lock.json` festgehaltenen Versionen wieder her. Die Skills werden für den lokalen Website-Start und das Hosting nicht benötigt. Installationsweg, angewendete Empfehlungen und Prüfungen: [docs/SKILLS.md](docs/SKILLS.md).
@@ -124,6 +133,6 @@ Die Konfigurationen werden lokal geprüft. Der Nutzer hat Vercel eingerichtet; d
 
 Vor öffentlicher Bereitstellung bleiben die bereits in der Übergabe genannten rechtlichen Angaben und Datenschutzhinweise zu prüfen. Es wurden keine Kontaktangaben erfunden. Die E-Mail-Adresse wurde auf ausdrücklichen Nutzerwunsch aus dem bereitgestellten Lebenslauf übernommen. Der bestehende LinkedIn-Link ist unverändert und wird erst beim Anklicken extern geöffnet.
 
-## QR-Code später
+## QR-Code verwenden
 
-Erst nach Festlegung und Prüfung der dauerhaften HTTPS-Adresse einen QR-Code auf genau diese URL erzeugen. Keine lokale Adresse oder kurzlebige Deployment-Vorschau verwenden. Testdruck mit Smartphone scannen; der QR-Code gehört z. B. in die echte Lebenslauf-PDF. In diesem Stand existieren weder eine erfundene öffentliche URL noch ein darauf basierender QR-Code.
+Der QR-Code zeigt auf die vom Nutzer bestätigte Adresse `https://lebenslauf-xi.vercel.app/`. PNG und druckfähiges SVG liegen unter `assets/qr-dirk-herrmann.*`. Der Code wurde unabhängig decodiert; vor einem Drucklauf außerdem den echten Testdruck mit dem Smartphone scannen. Die freigegebene Lebenslauf-PDF bleibt unverändert. Hinweise zur späteren Domain-Umstellung stehen in [docs/DIGITALE_VISITENKARTE.md](docs/DIGITALE_VISITENKARTE.md).

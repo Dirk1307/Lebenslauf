@@ -1,0 +1,2 @@
+# Preserve the CRLF line endings required by the contact-card format.
+assets/dirk-herrmann.vcf -text whitespace=cr-at-eol

@@ -2,7 +2,19 @@
 
 Stand des vollständigen Prüflaufs: 6. November 2026. Geprüft wurde die vorhandene Website nach den gezielten technischen Änderungen und den freigegebenen Inhaltsanpassungen: Hero ohne Kappe/mit verschränkten Armen, entfernter Studien-Eintrag, Expandable Cards im Bereich Arbeitsweise sowie die anhand der Nutzerkorrekturen und des Lebenslaufs überarbeiteten Texte und sieben unterschiedliche Illustrationen in Abschnitt 03/04.
 
-## Aktueller Stand · Smartphone und iPhone/Safari
+## Aktueller Stand · Digitale Visitenkarte
+
+Der abschließende Gesamtlauf besteht aus **43 Haupt-, 19 Touch- und 9 Karten-Prüfgruppen: insgesamt 71 bestanden**. Elf axe-Scans melden keine automatischen Verstöße; zwei davon prüfen den ergänzten Kontaktbereich bei 390 und 1440 px.
+
+Der QR-Code wurde mit einem unabhängigen Decoder geprüft: Das 984 × 984 px große PNG sowie PNG und SVG in einer auf 256 px verkleinerten Darstellung ergeben exakt `https://lebenslauf-xi.vercel.app/`. Die vCard enthält ausschließlich Name, E-Mail, Website und LinkedIn; keine Telefonnummer. Zeilenenden und UTF-8-Zeilenfaltung werden geprüft. Echte Downloads liefern die erwarteten Bytes und den Dateinamen, auch ohne JavaScript aus Website und Einzeldatei.
+
+Die Open-Graph-/Twitter-Card-Metadaten und die Canonical-Adresse verwenden absolute HTTPS-Adressen. Das Vorschaubild ist als PNG in 1200 × 630 px vorhanden und lokal abrufbar. Der zusätzliche Kontakt-Link bleibt bei 320, 390 und 1440 px erreichbar, mindestens 44 px hoch und ohne horizontalen Überlauf. Vercel und Netlify liefern übereinstimmende MIME-, Dateinamen- und Cache-Header für die Kontaktdatei. Die gezielte Impeccable-CSS-Prüfung meldet keine Befunde.
+
+Die Sicherheitsrichtlinie bleibt bestehen; der finale Browserlauf meldet keine JavaScript-, HTTP- oder CSP-Fehler. Die beiden Originalporträts und die bereits geprüfte PDF ohne Telefonnummer haben unveränderte SHA-256-Prüfsummen. Der Hosting-Build bleibt ein statischer Kopierschritt; QR-/Bildwerkzeuge werden nur bei Entwicklung und Tests benötigt.
+
+Nachweise und Grenzen: [Karten-Prüfbericht](docs/qa/card/report.json), [Dateinachweise](docs/qa/card/assets.json) und [Verwendung](docs/DIGITALE_VISITENKARTE.md). Der native Import in die iPhone-Kontakte-App, reale Drucke und der Abruf durch WhatsApp/LinkedIn wurden nicht automatisiert geprüft. Die Live-Adresse bleibt aus der Cloud-Netzrichtlinie gesperrt; der erfolgreiche Vercel-Deployment-Status ist deshalb gesondert zu prüfen.
+
+## Mobilstand · Smartphone und iPhone/Safari
 
 Der finale Lauf von `CHROMIUM_PATH=/usr/bin/chromium npm test` besteht aus **43 bisherigen Prüfgruppen plus 19 zusätzlichen Mobil-/Touch-Prüfgruppen: insgesamt 62 bestanden**. Dazu gehören **neun axe-Scans ohne automatische Verstöße**: sechs bestehende Seiten-/Dialogscans und drei gezielte Scans der geöffneten Kompetenzkarten.
 
@@ -18,7 +30,7 @@ Nachweise: [Hauptlauf](docs/qa/report.json), [Touch-Lauf](docs/qa/mobile/report.
 
 ## Ergänzung · 6. November 2026: Design- und Animations-Skills
 
-Diese Skill-/Performance-Messungen dokumentieren den Stand **vor** der oben beschriebenen Smartphone-Anpassung. Die aktuelle Abnahme ist der 62-Gruppen-Lauf oben.
+Diese Skill-/Performance-Messungen dokumentieren den Stand **vor** der oben beschriebenen Smartphone-Anpassung. Die aktuelle Abnahme ist der 71-Gruppen-Lauf oben.
 
 Taste, Impeccable und die Emil-Kowalski-Skills wurden projektlokal für Codex installiert und gezielt auf die vorhandenen Interaktionen angewendet. Der abschließende vollständige Browserlauf enthält **43 bestandene Prüfgruppen** und sechs axe-Prüfungen ohne automatische Verstöße. Neu geprüft: Tastaturöffnung ohne Warteanimation, sichtbare Kontinuität beim schnellen Schließen einer noch öffnenden Karte, sofortiges Escape und ausbleibender Hover-Zoom auf dem emulierten Touch-Gerät. Die bestehenden Foto-, Scroll-, Fallback-, PDF- und Offline-Prüfungen bestehen ebenfalls.
 
@@ -82,7 +94,7 @@ Der abschließende maschinenlesbare Bericht und ausgewählte Screenshots liegen 
 | Einzeldatei-Vorschau | Neu aus aktuellen Quellen erzeugt; eingebettetes Hero-Bild mit 1000 × 667, Studien-Bezug entfernt, Arbeitsweise-Dialog auf Smartphone/Desktop ohne Server und externe Ressourcenanfragen geprüft |
 | Ressourcen und Sicherheit | Keine JavaScript-/Konsolenfehler, HTTP-Fehler, CSP-Verstöße oder externen Ressourcenanfragen im Prüflauf |
 
-Hauptlauf: **43 Prüfgruppen bestanden**; zusammen mit den **19 Mobil-/Touch-Gruppen** insgesamt **62**. Einzelne Prüfgruppen enthalten mehrere Assertions bzw. Auflösungen. Es wurden keine fehlgeschlagenen Prüfungen als bestanden gewertet und keine Tests übersprungen. Der zusätzliche Taste-Budgetcheck ist oben mit seinem tatsächlichen FAIL/WARN-Ergebnis getrennt aufgeführt.
+Hauptlauf: **43 Prüfgruppen bestanden**; zusammen mit **19 Mobil-/Touch-Gruppen** und **9 Kartengruppen** insgesamt **71**. Einzelne Prüfgruppen enthalten mehrere Assertions bzw. Auflösungen. Es wurden keine fehlgeschlagenen Prüfungen als bestanden gewertet und keine Tests übersprungen. Der zusätzliche Taste-Budgetcheck ist oben mit seinem tatsächlichen FAIL/WARN-Ergebnis getrennt aufgeführt.
 
 ## Integrität und Veröffentlichungsvorbereitung
 

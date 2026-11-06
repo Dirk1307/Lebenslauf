@@ -40,6 +40,13 @@
     Cache-Control = "public, max-age=0, must-revalidate"
 
 [[headers]]
+  for = "/assets/dirk-herrmann.vcf"
+  [headers.values]
+    Content-Type = "text/vcard; charset=utf-8"
+    Content-Disposition = 'inline; filename="Dirk-Herrmann.vcf"'
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
   for = "/assets/lebenslauf-dirk-herrmann.pdf"
   [headers.values]
     Content-Type = "application/pdf"

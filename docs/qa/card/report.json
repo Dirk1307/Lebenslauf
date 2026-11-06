@@ -1,0 +1,40 @@
+{
+  "checks": [
+    "QR-PNG independently decoded to the exact confirmed website URL",
+    "vCard contains only the four approved contact fields, no phone/private address, and valid CRLF/folding",
+    "Share image is a standard 1200×630 PNG",
+    "320px: absolute share metadata, reachable PNG, native vCard download, touch target and contact layout",
+    "390px: absolute share metadata, reachable PNG, native vCard download, touch target and contact layout",
+    "Both PNG and SVG QR files decode correctly at a reduced 256px screen size",
+    "1440px: absolute share metadata, reachable PNG, native vCard download, touch target and contact layout",
+    "Hosted site: exact vCard download without JavaScript",
+    "Offline single file: exact vCard download without JavaScript"
+  ],
+  "errors": [],
+  "axe": [
+    {
+      "width": 390,
+      "violations": []
+    },
+    {
+      "width": 1440,
+      "violations": []
+    }
+  ],
+  "qr": {
+    "url": "https://lebenslauf-xi.vercel.app/",
+    "width": 984,
+    "height": 984
+  },
+  "vcard": {
+    "sha256": "ca969da9e51629e19466914850a15218a5441961be399cee4e174d4312383a9d",
+    "bytes": 245,
+    "phone": false,
+    "fields": [
+      "name",
+      "email",
+      "website",
+      "linkedin"
+    ]
+  }
+}

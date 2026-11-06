@@ -2,10 +2,11 @@
 
 ## Aktueller vollständiger Prüflauf · 6. November 2026
 
-**62 Prüfgruppen bestanden: 43 im Hauptlauf plus 19 im Touch-Lauf.** Neun axe-Prüfungen ohne automatische Verstöße, einschließlich der drei geöffneten Kompetenzkarten. Browser: Chromium mit emulierten Mobilansichten und synthetisierten Touch-Gesten. Die sichtbaren Maus-Hinweise sind entfernt.
+**71 Prüfgruppen bestanden: 43 im Hauptlauf, 19 im Touch-Lauf und 9 für die digitale Visitenkarte.** Elf axe-Prüfungen ohne automatische Verstöße, einschließlich der drei geöffneten Kompetenzkarten und des ergänzten Kontaktbereichs. Browser: Chromium mit emulierten Mobilansichten und synthetisierten Touch-Gesten.
 
 - [Maschinenlesbarer Prüfbericht](report.json)
 - [Touch-Prüfbericht](mobile/report.json) und [mobile Screenshots mit Prüfgrenzen](mobile/README.md)
+- [Digitale Visitenkarte: QR, vCard und Vorschau](card/README.md)
 - [Redaktionsnachweis und PDF-Prüfsumme](cv-download/redaction.json)
 - Skill-Werkzeuge vor der Mobilanpassung: [Taste Performance](skills/perf.json), [Impeccable-Rohbefund vor Bereinigung der Altregel](skills/impeccable-detect.json)
 - Hero mit Download: [390 px](hero-390.png), [768 px](hero-768.png), [1440 px](hero-1440.png)

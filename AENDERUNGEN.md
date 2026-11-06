@@ -6,6 +6,15 @@
 
 V6A enthält eine statische HTML-Seite mit mehreren aufeinander aufbauenden CSS-Ständen und drei eingebetteten Skriptblöcken. Die Effekte sind eigene Vanilla-JavaScript-Implementierungen; es wurden keine Componentry-/React-Komponenten importiert.
 
+## Digitale Visitenkarte · 6. November 2026
+
+- Einen direkten QR-Code auf die bestätigte Vercel-Adresse als hochauflösendes PNG und als SVG erzeugt. Keine Trackingparameter oder fremder QR-Weiterleitungsdienst.
+- „Kontakt speichern“ im vorhandenen Kontaktbereich ergänzt. Die VCF enthält Name, E-Mail, Website und LinkedIn ohne Telefonnummer. Passende MIME-/Dateinamen-/Cache-Header in Vercel und Netlify; nativer Geräte-Dialog möglich, Offline-Datei mit VCF-Download.
+- Eigenes Link-Vorschaubild in 1200 × 630 px aus der V6-Gestaltung und dem bestehenden Hero-Foto gerendert; Canonical-, Open-Graph- und Twitter-Card-Metadaten ergänzt. Originalporträts und Website-PDF bleiben unverändert.
+- `site-profile.json`, HTML-Bildvorlage und optionalen Erzeugungsschritt ergänzt. QR-Bibliotheken dienen nur Entwicklung und Tests; keine neue Laufzeitbibliothek oder Änderung am statischen Hosting-Build.
+- Eine unabhängige QR-Decodierung und echte Kontakt-Downloads auch ohne JavaScript sind in `tests/business-card.cjs` ergänzt. Verwendung und spätere Domain-Umstellung: `docs/DIGITALE_VISITENKARTE.md`.
+- Finaler Gesamtlauf: 71 Prüfgruppen bestanden (43 Haupt-, 19 Touch- und 9 Kartengruppen), elf axe-Scans ohne automatische Verstöße. QR-PNG/SVG unabhängig decodiert, Originalporträts und PDF-Prüfsummen unverändert.
+
 ## Smartphone und iPhone/Safari · 6. November 2026
 
 - Die gemeldeten fehlenden Motive adressiert: alle sieben Illustrationen direkt in HTML eingebettet. Die Originaldateien bleiben erhalten; drei SVG-Inline-Styles durch eine CSS-Klasse ersetzt, damit die bestehende CSP ohne Lockerung funktioniert.

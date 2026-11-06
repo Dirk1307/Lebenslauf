@@ -2,7 +2,23 @@
 
 Stand des vollständigen Prüflaufs: 6. November 2026. Geprüft wurde die vorhandene Website nach den gezielten technischen Änderungen und den freigegebenen Inhaltsanpassungen: Hero ohne Kappe/mit verschränkten Armen, entfernter Studien-Eintrag, Expandable Cards im Bereich Arbeitsweise sowie die anhand der Nutzerkorrekturen und des Lebenslaufs überarbeiteten Texte und sieben unterschiedliche Illustrationen in Abschnitt 03/04.
 
+## Aktueller Stand · Smartphone und iPhone/Safari
+
+Der finale Lauf von `CHROMIUM_PATH=/usr/bin/chromium npm test` besteht aus **43 bisherigen Prüfgruppen plus 19 zusätzlichen Mobil-/Touch-Prüfgruppen: insgesamt 62 bestanden**. Dazu gehören **neun axe-Scans ohne automatische Verstöße**: sechs bestehende Seiten-/Dialogscans und drei gezielte Scans der geöffneten Kompetenzkarten.
+
+Die sieben Illustrationen sind direkt eingebettet. Zusätzlich zu ihrer SVG-Geometrie vergleicht der Touch-Test jeden gerenderten Bildausschnitt mit derselben vorübergehend ausgeblendeten Grafik: Alle sieben Motive zeichnen sichtbare Pixel. Es gibt keine externen SVG-`use`-Abhängigkeiten mehr. Die drei ursprünglichen Inline-Styles einer Grafik wurden in eine CSS-Klasse überführt; die vorhandene CSP bleibt unverändert und der finale Lauf meldet keine CSP-, JavaScript- oder HTTP-Fehler.
+
+Bei **320, 375, 390 und 430 px** wurden Schriftgrößen, Touch-Ziele, alle Tipp-Karten, Navigation und Überläufe geprüft. Bei 390 px wurden echte synthetisierte Touch-Sequenzen über CDP ausgeführt: horizontales Wischen wechselt die Erfahrungsfelder, vertikales Wischen über derselben Fläche und über Kompetenzkarten scrollt die Seite. Ein Scroll-Swipe öffnet keine Karte und startet keine Porträt-Welle. Kurzes Antippen erzeugt auf beiden Fotos leichte, wieder endende Wellen ohne WebGL-Start auf Touch. Alle vier Detailkarten zeigen ihre Illustration und geben Fokus sowie Scrollposition zurück. Orientierungswechsel und reduzierte Bewegung wurden ebenfalls geprüft.
+
+Die Fotos, alle sieben Original-SVG-Dateien und die Website-PDF ohne Telefonnummer entsprechen weiterhin ihren dokumentierten SHA-256-Prüfsummen. Die sichtbaren fachlichen Texte bleiben erhalten. Die erzeugte Einzeldatei enthält die gleiche Anpassung; die Downloadprüfungen bestehen weiterhin.
+
+Nachweise: [Hauptlauf](docs/qa/report.json), [Touch-Lauf](docs/qa/mobile/report.json), [mobile Screenshots und Grenzen](docs/qa/mobile/README.md). Technische Erläuterung und Einordnung der 47 ursprünglichen Impeccable-Heuristikbefunde: [docs/MOBIL.md](docs/MOBIL.md). Der konkrete Kontrasthinweis zur kleinen Nummer der türkisfarbenen Kompetenzrückseite ist korrigiert und im geöffneten Zustand mit axe geprüft; wichtige kleine Beschriftungen wurden vergrößert. Die Rohbefunde bleiben erhalten.
+
+**Grenze:** Die vom Nutzer genannte Live-Adresse und die WebKit-Downloadserver sind aus dieser Cloud-Umgebung durch die Netzrichtlinie gesperrt. Geprüft wurde lokal in Chromium mit emulierten Mobilansichten und synthetisierten Touch-Eingaben, **nicht auf einem physischen iPhone oder direkt in Safari**. Die Entfernung der konkreten externen SVG-Abhängigkeit und die Touch-Anpassungen sind implementiert; der finale Gerätecheck und der erfolgreiche Vercel-Deployment-Status müssen an der öffentlichen URL geprüft werden.
+
 ## Ergänzung · 6. November 2026: Design- und Animations-Skills
+
+Diese Skill-/Performance-Messungen dokumentieren den Stand **vor** der oben beschriebenen Smartphone-Anpassung. Die aktuelle Abnahme ist der 62-Gruppen-Lauf oben.
 
 Taste, Impeccable und die Emil-Kowalski-Skills wurden projektlokal für Codex installiert und gezielt auf die vorhandenen Interaktionen angewendet. Der abschließende vollständige Browserlauf enthält **43 bestandene Prüfgruppen** und sechs axe-Prüfungen ohne automatische Verstöße. Neu geprüft: Tastaturöffnung ohne Warteanimation, sichtbare Kontinuität beim schnellen Schließen einer noch öffnenden Karte, sofortiges Escape und ausbleibender Hover-Zoom auf dem emulierten Touch-Gerät. Die bestehenden Foto-, Scroll-, Fallback-, PDF- und Offline-Prüfungen bestehen ebenfalls.
 
@@ -62,11 +78,11 @@ Der abschließende maschinenlesbare Bericht und ausgewählte Screenshots liegen 
 | Ohne IntersectionObserver / Canvas / Dialog-Unterstützung | Inhalt und Foto bleiben sichtbar; kein Skriptabbruch. Ohne `showModal()` bleiben die vier Schrittbeschreibungen direkt unter den Karten lesbar |
 | Lebenslauf-Download | Reale Website-PDF ohne Telefonnummer vorhanden; nativer Download-Link statt Platzhalter, auch ohne JavaScript |
 | PDF-Inhalt und Auslieferung | Zwei Seiten; entfernte Telefonnummer nicht auslesbar. Echte Downloads aus Website/Einzeldatei werden auf Dateinamen, PDF-Inhalt und SHA-256 geprüft; HTTP-Antwort liefert den korrekten PDF-Typ |
-| Automatische Barrierefreiheit | Sechs axe-Prüfungen: Desktop/Smartphone mit normaler und reduzierter Bewegung plus jeweils geöffneter Arbeitsweise-Karte; keine automatischen Verstöße gegen die geprüften WCAG-2/2.1-A/AA- und Best-Practice-Regeln |
+| Automatische Barrierefreiheit | Neun axe-Prüfungen: drei geöffnete Kompetenzkarten sowie Desktop/Smartphone mit normaler und reduzierter Bewegung plus jeweils geöffneter Arbeitsweise-Karte; keine automatischen Verstöße gegen die geprüften WCAG-2/2.1-A/AA- und Best-Practice-Regeln |
 | Einzeldatei-Vorschau | Neu aus aktuellen Quellen erzeugt; eingebettetes Hero-Bild mit 1000 × 667, Studien-Bezug entfernt, Arbeitsweise-Dialog auf Smartphone/Desktop ohne Server und externe Ressourcenanfragen geprüft |
 | Ressourcen und Sicherheit | Keine JavaScript-/Konsolenfehler, HTTP-Fehler, CSP-Verstöße oder externen Ressourcenanfragen im Prüflauf |
 
-Insgesamt: **43 Prüfgruppen bestanden**. Einzelne Prüfgruppen enthalten mehrere Assertions bzw. Auflösungen. Es wurden keine fehlgeschlagenen Prüfungen als bestanden gewertet und keine Tests übersprungen. Der zusätzliche Taste-Budgetcheck ist oben mit seinem tatsächlichen FAIL/WARN-Ergebnis getrennt aufgeführt.
+Hauptlauf: **43 Prüfgruppen bestanden**; zusammen mit den **19 Mobil-/Touch-Gruppen** insgesamt **62**. Einzelne Prüfgruppen enthalten mehrere Assertions bzw. Auflösungen. Es wurden keine fehlgeschlagenen Prüfungen als bestanden gewertet und keine Tests übersprungen. Der zusätzliche Taste-Budgetcheck ist oben mit seinem tatsächlichen FAIL/WARN-Ergebnis getrennt aufgeführt.
 
 ## Integrität und Veröffentlichungsvorbereitung
 

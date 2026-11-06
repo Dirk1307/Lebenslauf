@@ -1,0 +1,40 @@
+{
+  "engine": "Chromium with synthesized touch; not physical iOS/Safari",
+  "checks": [
+    "320px: seven inline motifs, readable body copy, 44px controls and no horizontal overflow",
+    "320px: all three competency cards flip on touch and return focus correctly",
+    "320px: all experience cards reachable, navigation reflects position, no clipped copy or workflow titles",
+    "375px: seven inline motifs, readable body copy, 44px controls and no horizontal overflow",
+    "375px: all three competency cards flip on touch and return focus correctly",
+    "375px: all experience cards reachable, navigation reflects position, no clipped copy or workflow titles",
+    "390px: seven inline motifs, readable body copy, 44px controls and no horizontal overflow",
+    "390px: all three competency cards flip on touch and return focus correctly",
+    "390px: all experience cards reachable, navigation reflects position, no clipped copy or workflow titles",
+    "390px: all seven illustrations paint visible pixels rather than empty SVG boxes",
+    "390px: synthesized horizontal swipe changes cards; vertical swipe across the same surface scrolls the page",
+    "390px: vertical swipe across a competency card scrolls without accidentally opening it",
+    "390px: tap ripples on both portraits, no WebGL startup on touch, no ripple or scroll blocking during swipes",
+    "390px: four workflow dialogs open by tap with visible art, restore focus and preserve page position",
+    "390px: portrait/landscape changes restore readable faces and reset touch controls safely",
+    "430px: seven inline motifs, readable body copy, 44px controls and no horizontal overflow",
+    "430px: all three competency cards flip on touch and return focus correctly",
+    "430px: all experience cards reachable, navigation reflects position, no clipped copy or workflow titles",
+    "Reduced motion: competencies remain open, tap ripples rest, carousel controls still work"
+  ],
+  "errors": [],
+  "axeScans": [
+    {
+      "label": "Open competency 1",
+      "violations": []
+    },
+    {
+      "label": "Open competency 2",
+      "violations": []
+    },
+    {
+      "label": "Open competency 3",
+      "violations": []
+    }
+  ],
+  "browserVersion": "155.0.8059.79"
+}

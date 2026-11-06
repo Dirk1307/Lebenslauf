@@ -6,6 +6,17 @@
 
 V6A enthält eine statische HTML-Seite mit mehreren aufeinander aufbauenden CSS-Ständen und drei eingebetteten Skriptblöcken. Die Effekte sind eigene Vanilla-JavaScript-Implementierungen; es wurden keine Componentry-/React-Komponenten importiert.
 
+## Smartphone und iPhone/Safari · 6. November 2026
+
+- Die gemeldeten fehlenden Motive adressiert: alle sieben Illustrationen direkt in HTML eingebettet. Die Originaldateien bleiben erhalten; drei SVG-Inline-Styles durch eine CSS-Klasse ersetzt, damit die bestehende CSP ohne Lockerung funktioniert.
+- Bildvorderseiten der drei Kompetenzkarten mobil wieder sichtbar. Antippen öffnet die Inhaltsrückseite, eine Schaltfläche führt zurück. Fokus, zugängliche Namen und Zustände folgen der jeweils sichtbaren Seite. Desktop behält die Scroll-Split-Animation, reduzierte Bewegung und No-JS behalten offen lesbare Texte.
+- Erfahrungsfelder erhalten sichtbare Pfeile und Positionsschaltflächen nach dem geprüften Watermelon-Navigator-Muster. Native Wischbewegung und vertikales Scrollen bleiben erhalten; keine automatische Rotation.
+- Beide Porträts reagieren auf kurzes Antippen mit leichten 2D-Wellen, ohne WebGL auf Touch zu starten. Ein Swipe oder abgebrochener Touch löst keine Welle aus.
+- Mobile Fließtexte auf mindestens 16 px, zentrale Bedienelemente auf mindestens 44 px angepasst; Foto-/Kartenabstände, Arbeitsweise-Raster, Werdegang, Safe Areas und dynamische Dialoghöhe abgestimmt. Die redundanten großen Wasserzeichenzahlen der Erfahrungsfelder sind mobil ausgeblendet.
+- Eigenes mobiles Skript und passende Cache-Regeln ergänzt. Einzeldatei aus denselben Quellen erzeugt. Zusätzliche Touch-Suite prüft 320/375/390/430 px, Wischen und Tippen, tatsächliche SVG-Pixel, Fokus-/Scroll-Rückgabe und Orientierungswechsel.
+- Finaler Testlauf: 62 Prüfgruppen bestanden (43 bisherige plus 19 Touch-Gruppen), neun axe-Scans ohne automatische Verstöße. Original-SVGs, Porträts und PDF-Prüfsummen unverändert; keine Browser-, HTTP- oder CSP-Fehler.
+- Live-Adresse und Playwright-WebKit-Download sind in der Cloud-Netzrichtlinie gesperrt. Die Umsetzung wird lokal mit Chromium und synthetisierten Touch-Gesten geprüft; ein physischer iPhone-/Safari-Test bleibt gesondert nötig.
+
 ## Design-Skills installiert und angewendet · 6. November 2026
 
 - Taste, Impeccable und alle 17 Emil-Kowalski-Skills projektlokal für Codex installiert; Quellen und Prüfsummen in `skills-lock.json`, Wiederherstellung über `npm run skills:restore`. Beim blockierten Impeccable-Bundle wurde erfolgreich die offizielle GitHub-Quelle verwendet.

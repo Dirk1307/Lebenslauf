@@ -131,8 +131,10 @@ const digest = bytes => createHash('sha256').update(bytes).digest('hex');
     assert.equal((await page.locator('.intro-photo-note').textContent()).includes('YES'),false);
     const illustrationSelector='.case-illustration, .process-trigger .work-illustration';
     await page.waitForFunction(selector=>[...document.querySelectorAll(selector)].length===7 && [...document.querySelectorAll(selector)].every(svg=>svg.getBBox().width>0),illustrationSelector);
-    const illustrationSources=await page.locator(illustrationSelector).evaluateAll(els=>els.map(svg=>svg.querySelector('use').getAttribute('href')));
+    const illustrationSources=await page.locator(illustrationSelector).evaluateAll(els=>els.map(svg=>svg.dataset.illustration));
     assert.equal(new Set(illustrationSources).size,7);
+    assert.equal(await page.locator('use[href^="assets/"]').count(),0,'Illustrations must not depend on external SVG use support');
+    assert.equal(await page.locator('[data-illustration] [style]').count(),0,'Illustration styles must comply with the deployment CSP');
 
     assert.equal(await page.evaluate(() => document.fonts.check('800 16px "DM Sans"') && document.fonts.check('italic 16px "DM Serif Display"')), true);
     await page.screenshot({path:path.join(results,`hero-${width}.png`)});
@@ -291,7 +293,9 @@ const digest = bytes => createHash('sha256').update(bytes).digest('hex');
       await page.screenshot({path:path.join(results,'split-complete-1440.png')});
       for (const [p,index] of [[0,1],[.48,2],[.95,3]]) {
         await progress('.cases-scroll',p);
-        assert.equal(await page.locator('.cases-counter>span').textContent(),`0${index} / 03`);
+        // Include the actual markup and route if this scroll-state assertion fails.
+        const state=await page.evaluate(()=>({counter:document.querySelector('.cases-counter')?.outerHTML,text:document.querySelector('.cases-counter>span')?.textContent,url:location.href}));
+        assert.equal(state.text,`0${index} / 03`,JSON.stringify(state));
         assert.equal(await page.locator('.case-card').nth(index-1).evaluate(el=>Number(getComputedStyle(el).opacity)),1);
         await page.screenshot({path:path.join(results,`case-${index}-1440.png`)});
       }
@@ -427,6 +431,9 @@ const digest = bytes => createHash('sha256').update(bytes).digest('hex');
 })().catch(async error=>{
   console.error(error);
   await fs.writeFile(path.join(results,'failure.txt'),String(error.stack)).catch(()=>{});
+  if(browser)for(const context of browser.contexts())for(const page of context.pages()){
+    await page.content().then(html=>fs.writeFile(path.join(results,'failure-page.html'),html)).catch(()=>{});
+  }
   process.exitCode=1;
 }).finally(async()=>{
   if(browser)await browser.close();

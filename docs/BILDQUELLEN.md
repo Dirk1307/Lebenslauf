@@ -22,8 +22,10 @@ Die ausgewählten Originaldateien samt SHA-256 und Verwendungszweck sind in `ass
 
 ## Technische Einbindung
 
-Die normale Website nutzt lokale SVG-Verweise innerhalb von SVG-Elementen. Dadurch folgen die Motive der bestehenden Markenfarbe, ohne zusätzliche Bilddienste oder eine neue Laufzeitbibliothek. Die gerahmten Bilder zeigen das vollständige Motiv.
+Die sieben Motive sind jetzt direkt als SVG-Pfade in `index.html` eingebettet. Damit hängen Website und Dialoge nicht mehr von externen `<use href="datei.svg">`-Verweisen auf ein vollständiges SVG-Dokument ab, deren Unterstützung je nach Browser abweicht. Die Markenfarbe folgt weiterhin `currentColor`; die gerahmten Bilder zeigen das vollständige Motiv. `data-illustration` und ein Kommentar verweisen auf die jeweilige Originaldatei.
 
-`scripts/prepare-preview.cjs` bettet die Originalpfade für die herunterladbare Einzeldatei direkt ein. Der Arbeitsweise-Dialog übernimmt die Illustration der jeweils geöffneten Karte; dadurch stimmen normale Website und Offline-Vorschau überein. Quellen-/Lizenzhinweise werden in beide Veröffentlichungspakete übernommen.
+Die Originaldateien im Asset-Ordner bleiben bytegleich erhalten. Drei `style="isolation:isolate"`-Attribute der Projektorganisationsgrafik werden ausschließlich bei der HTML-Einbindung durch die gleichwertige CSS-Klasse `illustration-isolate` ersetzt. So gelten dieselben Darstellungsregeln unter der vorhandenen Content Security Policy, ohne Inline-Styles freizugeben.
+
+`scripts/prepare-preview.cjs` übernimmt die bereits eingebetteten Pfade auch in die herunterladbare Einzeldatei. Der Arbeitsweise-Dialog klont das Inline-SVG der jeweils geöffneten Karte; dadurch stimmen normale Website, Dialog und Offline-Vorschau überein. Quellen-/Lizenzhinweise werden in beide Veröffentlichungspakete übernommen.
 
 Weitere Kandidaten aus ManyPixels und illlustrations.co wurden recherchiert und betrachtet, aber nicht in die Website übernommen.

@@ -182,18 +182,19 @@
     const ctx = fallback.getContext('2d');
     const waves = [], data = new Float32Array(32);
     let gl = null, program, texture, locations, ready = false, attempted = false;
-    let frame = null, lastPoint = null, visible = true;
-    const allowed = () => !motion.matches && finePointer.matches && visible && !document.hidden;
+    let frame = null, lastPoint = null, visible = true, touchStart = null;
+    const allowed = () => !motion.matches && visible && !document.hidden;
     function stop() {
       if (frame !== null) cancelAnimationFrame(frame);
       frame = null;
       waves.length = 0;
       lastPoint = null;
+      touchStart = null;
       canvas.classList.remove('ready');
       ctx?.clearRect(0,0,fallback.width,fallback.height);
     }
     function initGL() {
-      if (attempted || !photo.complete || !photo.naturalWidth || !allowed()) return;
+      if (attempted || !finePointer.matches || !photo.complete || !photo.naturalWidth || !allowed()) return;
       attempted = true;
       try {
         gl = canvas.getContext('webgl', { alpha: false, antialias: false, premultipliedAlpha: false });
@@ -288,9 +289,7 @@
     }
     function schedule() { if (frame===null && allowed()) frame=requestAnimationFrame(paint); }
     parent.addEventListener('pointerenter',initGL,{ passive: true });
-    parent.addEventListener('pointermove',e => {
-      if (e.pointerType==='touch' || !allowed()) return;
-      initGL();
+    function addWave(e) {
       // Map viewport pointers back through the about-photo's small CSS rotation.
       const rect=parent.getBoundingClientRect();
       const angle = parent.closest('.intro-photo-side') ? 2*Math.PI/180 : 0;
@@ -301,7 +300,22 @@
       lastPoint={x,y}; waves.push({x,y,time:performance.now()});
       if (waves.length>8) waves.shift();
       schedule();
+    }
+    parent.addEventListener('pointermove',e => {
+      if (e.pointerType==='touch' || !finePointer.matches || !allowed()) return;
+      initGL();
+      addWave(e);
     },{ passive: true });
+    // A short stationary tap gets a light 2D ripple. A page swipe never starts it.
+    parent.addEventListener('pointerdown',e => {
+      if (e.pointerType==='touch' && e.isPrimary && allowed()) touchStart={id:e.pointerId,x:e.clientX,y:e.clientY,time:performance.now()};
+    },{passive:true});
+    parent.addEventListener('pointerup',e => {
+      const start=touchStart; touchStart=null;
+      if (!start || start.id!==e.pointerId || !allowed()) return;
+      if (performance.now()-start.time<450 && Math.hypot(e.clientX-start.x,e.clientY-start.y)<10) addWave(e);
+    },{passive:true});
+    parent.addEventListener('pointercancel',()=>{touchStart=null;},{passive:true});
     parent.addEventListener('pointerleave',()=>{lastPoint=null;});
     canvas.addEventListener('webglcontextlost',e=>{
       e.preventDefault(); ready=false; stop();

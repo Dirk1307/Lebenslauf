@@ -5,7 +5,8 @@
   "description": "Bestehende statische Bewerbungswebsite V6A; kein Build erforderlich.",
   "scripts": {
     "start": "python3 -m http.server 8000 --bind 127.0.0.1",
-    "test": "node scripts/prepare-deploy.cjs && node scripts/prepare-preview.cjs && node tests/site.cjs",
+    "test": "node scripts/prepare-deploy.cjs && node scripts/prepare-preview.cjs && node tests/site.cjs && node tests/mobile.cjs",
+    "test:mobile": "node scripts/prepare-deploy.cjs && node scripts/prepare-preview.cjs && node tests/mobile.cjs",
     "build": "node scripts/prepare-deploy.cjs",
     "preview:file": "node scripts/prepare-preview.cjs",
     "skills:restore": "npx --yes skills@1.7.6 experimental_install --frozen-lockfile"

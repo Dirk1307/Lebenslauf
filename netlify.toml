@@ -35,6 +35,11 @@
     Cache-Control = "public, max-age=0, must-revalidate"
 
 [[headers]]
+  for = "/assets/mobile-interactions.js"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
   for = "/assets/lebenslauf-dirk-herrmann.pdf"
   [headers.values]
     Content-Type = "application/pdf"

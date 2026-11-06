@@ -54,6 +54,15 @@
       ]
     },
     {
+      "source": "/assets/mobile-interactions.js",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    },
+    {
       "source": "/assets/lebenslauf-dirk-herrmann.pdf",
       "headers": [
         {

@@ -2,11 +2,12 @@
 
 ## Aktueller vollständiger Prüflauf · 6. November 2026
 
-43 Prüfgruppen bestanden, einschließlich echter Downloads der Website-PDF ohne Telefonnummer, unterbrechbarer Dialoganimation und Touch-Hover-Prüfung. Browser: Chromium, Smartphone-/Tablet-Ansichten emuliert. Die sichtbaren Maus-Hinweise sind entfernt.
+**62 Prüfgruppen bestanden: 43 im Hauptlauf plus 19 im Touch-Lauf.** Neun axe-Prüfungen ohne automatische Verstöße, einschließlich der drei geöffneten Kompetenzkarten. Browser: Chromium mit emulierten Mobilansichten und synthetisierten Touch-Gesten. Die sichtbaren Maus-Hinweise sind entfernt.
 
 - [Maschinenlesbarer Prüfbericht](report.json)
+- [Touch-Prüfbericht](mobile/report.json) und [mobile Screenshots mit Prüfgrenzen](mobile/README.md)
 - [Redaktionsnachweis und PDF-Prüfsumme](cv-download/redaction.json)
-- Skill-Werkzeuge: [Taste Performance](skills/perf.json), [Impeccable-Rohbefund vor Bereinigung der Altregel](skills/impeccable-detect.json)
+- Skill-Werkzeuge vor der Mobilanpassung: [Taste Performance](skills/perf.json), [Impeccable-Rohbefund vor Bereinigung der Altregel](skills/impeccable-detect.json)
 - Hero mit Download: [390 px](hero-390.png), [768 px](hero-768.png), [1440 px](hero-1440.png)
 - Kontakt: [390 px](kontakt-390.png), [768 px](kontakt-768.png), [1440 px](kontakt-1440.png)
 - [Scroll Split Card](split-complete-1440.png)

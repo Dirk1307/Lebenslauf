@@ -21,4 +21,14 @@ Die vier Schritte bleiben erhalten: Verstehen, Hinterfragen, Entwickeln, Umsetze
 
 Zusätzlich zur Vorlage: native modale Dialog-Semantik, Tastaturaktivierung, Escape, Fokusbegrenzung durch `showModal()`, Fokusrückgabe, Schließen über Schaltfläche oder Hintergrund, gesperrtes Hintergrundscrollen, vorheriger/nächster Schritt sowie reduzierte Bewegung. Ohne JavaScript bzw. ohne Dialog-Unterstützung bleiben alle vier Beschreibungen direkt unter ihren Karten lesbar.
 
-Die Einzeldatei unter `vorschau/` wird mit `node scripts/prepare-preview.cjs` direkt aus dem aktuellen HTML, CSS, beiden Skripten und den Assets erzeugt. So stimmen GitHub-Download und normale Website überein.
+Die Einzeldatei unter `vorschau/` wird mit `node scripts/prepare-preview.cjs` direkt aus dem aktuellen HTML, CSS, allen Skripten und den Assets erzeugt. So stimmen GitHub-Download und normale Website überein.
+
+## Mobile Ergänzung · 6. November 2026
+
+Für die Touch-Navigation der drei Erfahrungsfelder wurde zusätzlich das originale Muster [Carousel Navigator](https://github.com/WatermelonCorp/watermelon-platform/blob/b0171095227a67c40e627271a1e0ae67cdc2ed21/src/data/contents/animated-components/carousel-navigator/original.tsx) geprüft. Die Kombination aus Pfeilen und direkt wählbaren Positionen wird im vorhandenen V6-Stil umgesetzt: echte 44-px-Schaltflächen, aktive Seitenanzeige und native horizontale Scrollbewegung mit Scroll-Snap. Es gibt kein automatisches Weiterschalten. Vertikales Scrollen und die Trägheit des Browsers bleiben erhalten.
+
+Das React-/Motion-Demo wurde nicht importiert; `assets/mobile-interactions.js` implementiert die passende Navigation für die bestehenden Karten. Die dortigen fiktiven Inhalte, wechselnden Demo-Themen und Auto-Delay-Effekte werden nicht verwendet. Die schon vorhandene MIT-Lizenz deckt die dokumentierte Originalquelle ab.
+
+Die vorhandenen drei Split-Karten nach der Componentry-Referenz erhalten auf kleinen Bildschirmen eine Tipp-Variante mit Bildvorderseite und Inhaltsrückseite. Die Desktop-Scrollanimation bleibt erhalten. Bei reduzierter Bewegung oder fehlendem JavaScript bleibt der Text ohne Drehung offen. Die Componentry-Dokumentationsseiten konnten in dieser Cloud-Sitzung wegen der Netzrichtlinie nicht erneut abgerufen werden; es wurde keine neue Originalkomponente von dort importiert.
+
+Die vier Expandable Cards bleiben die Watermelon-Detailansichten. Ihre Illustrationen sind inzwischen direkt eingebettet, die mobile Dialoghöhe berücksichtigt `dvh`, und das Textfeld lässt sich bei Bedarf separat scrollen. Es werden keine zusätzlichen persönlichen Fotos eingeführt.

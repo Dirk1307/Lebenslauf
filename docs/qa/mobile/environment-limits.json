@@ -1,0 +1,11 @@
+{
+  "live_url": "https://lebenslauf-xi.vercel.app",
+  "live_inspection": false,
+  "live_http_status": 403,
+  "reason": "Cloud outbound network policy does not allow this domain",
+  "playwright_webkit_available": false,
+  "webkit_download": "Blocked by the cloud outbound policy (HTTP 403 Domain forbidden)",
+  "physical_ios_safari_test": false,
+  "tested_engine": "Chromium with synthesized touch input",
+  "photos_and_phone_free_pdf_unchanged": true
+}

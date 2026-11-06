@@ -16,6 +16,12 @@ Die Positionierung richtet sich auf **Marketing, Performance Marketing, Marketin
 - Abschnitt 03 und 04 verwenden sieben unterschiedliche recherchierte unDraw-Motive im bestehenden Kobaltblau. Quellen und Lizenzzuordnung: [docs/BILDQUELLEN.md](docs/BILDQUELLEN.md).
 - Die vier Arbeitsweise-Schritte öffnen sich als **Expandable Cards** mit Detailansicht nach der gewünschten Watermelon-Vorlage. Die Beschreibungen sind auf die Marketing-Arbeitsweise ausgerichtet; die V6-Farbwelt bleibt erhalten. Die Vanilla-Portierung, Originalquelle und MIT-Lizenz sind in [docs/WATERMELON.md](docs/WATERMELON.md) dokumentiert.
 
+## Smartphone-Darstellung
+
+Die Kompetenzkarten zeigen auf kleinen Bildschirmen wieder ihre Bildvorderseiten und lassen sich per Tipp öffnen und zurückdrehen. Die Erfahrungsfelder sind nativ wischbar und zusätzlich über Pfeile sowie drei Positionsschaltflächen erreichbar. Kurzes Antippen der beiden Porträts erzeugt eine leichte Welle; eine Scrollbewegung löst sie nicht aus. Reduzierte Bewegung zeigt die Kompetenztexte offen und lässt die Fotoeffekte ruhen.
+
+Sieben Inline-SVG-Motive ersetzen externe SVG-`use`-Verweise, um die gemeldeten iPhone-/Safari-Bildprobleme zu vermeiden. Mobile Fließtexte sind mindestens 16 px groß, wichtige Schaltflächen mindestens 44 px hoch; die Darstellung berücksichtigt sichere Bildschirmränder und dynamische Viewport-Höhen.
+
 ## Vorschau ohne Installation
 
 Auf GitHub den Branch `v6a-optimierung` auswählen und über **Code → Download ZIP** herunterladen. Die GitHub-Dateiansicht zeigt den HTML-Quelltext; für die interaktive Vorschau die ZIP entpacken und die folgende Datei lokal im Browser öffnen.
@@ -46,6 +52,7 @@ Dann im Browser `http://localhost:8000` öffnen. Mit `Strg+C` beenden. Für die 
 - `assets/site.css`: ursprüngliche V6A-Stile in derselben Reihenfolge; technische Korrekturen am Ende.
 - `assets/site.js`: Navigation und die fünf bisherigen Animationen, ohne Bibliothek zur Laufzeit.
 - `assets/work-card.js`: aufklappbare Arbeitsweise-Karten mit modalem Dialog und Tastatursteuerung.
+- `assets/mobile-interactions.js`: Tipp-Variante der vorhandenen Kompetenzkarten und Touch-/Tastaturnavigation der Erfahrungsfelder.
 - `assets/hero-dirk.webp` und `assets/about-dirk.webp`: die zwei ausgewählten Original-Personenfotos; die Hero-Auswahl wurde auf Nutzerwunsch geändert.
 - `assets/illustrations/`: sieben unterschiedliche SVG-Motive für Erfahrungsfelder und Arbeitsweise, mit Quellenmanifest.
 - `assets/fonts/`: DM Sans, DM Serif Display und ein kleines monochromes Symbol-Subset inklusive Lizenzen. Keine Verbindung zu Google Fonts.
@@ -87,13 +94,15 @@ CHROMIUM_PATH=/usr/bin/chromium npm test
 
 Der Test startet seinen eigenen lokalen Server mit der vorgesehenen Content Security Policy. Ergebnisse und Screenshots entstehen unter `test-results/`. Das Verzeichnis wird nicht veröffentlicht. Automatische Tests ersetzen keine Prüfung mit echten Mobilgeräten und Screenreadern.
 
+`npm test` führt auch die zusätzliche Touch-Suite aus. Für deren gezielte Wiederholung: `CHROMIUM_PATH=/usr/bin/chromium npm run test:mobile`. Sie prüft 320, 375, 390 und 430 px breite Touch-Ansichten, wirkliche synthetisierte Wisch-/Tipp-Eingaben, alle Karten und sichtbare SVG-Pixel. Das ist Chromium-Emulation und kein Nachweis eines Tests mit physischem iPhone/Safari.
+
 ## Design- und Animations-Skills
 
 Taste, Impeccable und die Emil-Kowalski-Skills sind projektlokal für Codex installiert und auf die vorhandenen Interaktionen angewendet. Nach einem neuen Checkout stellt `npm run skills:restore` die in `skills-lock.json` festgehaltenen Versionen wieder her. Die Skills werden für den lokalen Website-Start und das Hosting nicht benötigt. Installationsweg, angewendete Empfehlungen und Prüfungen: [docs/SKILLS.md](docs/SKILLS.md).
 
 ## Veröffentlichung vorbereiten
 
-Die Konfigurationen für Vercel und Netlify sind vorhanden; es wurde nichts veröffentlicht. Beide verwenden denselben kleinen Kopierschritt:
+Der Nutzer hat die Website unter [lebenslauf-xi.vercel.app](https://lebenslauf-xi.vercel.app) veröffentlicht. Der bearbeitete Git-Branch ist `v6a-optimierung`. Die Konfigurationen für Vercel und Netlify verwenden denselben kleinen Kopierschritt:
 
 ```sh
 node scripts/prepare-deploy.cjs
@@ -111,7 +120,7 @@ python3 -m http.server 8000 --bind 127.0.0.1 --directory dist
 
 **Netlify:** Repository verbinden; `netlify.toml` übernimmt Build-Befehl, `dist` und dieselben Sicherheitsheader. Ebenfalls keine Umgebungsvariablen nötig. Die installierten Testpakete sind für den Build nicht erforderlich.
 
-Beide Konfigurationen sind lokal geprüft, aber noch nicht bei einem Hostinganbieter ausgeführt. Nach dem ersten Deployment Bilder, Schriftarten, alle Anker, Sicherheitsheader und gegebenenfalls den echten PDF-Download auf der öffentlichen URL erneut prüfen. Die HTML-/CSS-/JS-Cache-Regeln erlauben Aktualisierungen; Bilder und Fonts werden einen Tag zwischengespeichert.
+Die Konfigurationen werden lokal geprüft. Der Nutzer hat Vercel eingerichtet; die öffentliche Adresse ist aus dieser Cloud-Umgebung wegen der Netzrichtlinie nicht direkt abrufbar. Nach jedem Deployment Bilder, Schriftarten, alle Anker, Sicherheitsheader und den PDF-Download auf der öffentlichen URL prüfen. Die HTML-/CSS-/JS-Cache-Regeln erlauben Aktualisierungen; Bilder und Fonts werden einen Tag zwischengespeichert. Bei aktivierter GitHub-Integration übernimmt Vercel Änderungen am verbundenen Branch automatisch; den erfolgreichen Deployment-Status im Vercel-Dashboard prüfen.
 
 Vor öffentlicher Bereitstellung bleiben die bereits in der Übergabe genannten rechtlichen Angaben und Datenschutzhinweise zu prüfen. Es wurden keine Kontaktangaben erfunden. Die E-Mail-Adresse wurde auf ausdrücklichen Nutzerwunsch aus dem bereitgestellten Lebenslauf übernommen. Der bestehende LinkedIn-Link ist unverändert und wird erst beim Anklicken extern geöffnet.
 

@@ -1,0 +1,20 @@
+[
+  {
+    "mode": "mouse",
+    "hover": "matrix(1, 0, 0, 1, 0, -2)",
+    "press": "matrix(0.985, 0, 0, 0.985, 0, 1)",
+    "passed": true
+  },
+  {
+    "mode": "touch",
+    "hover": "none",
+    "press": "matrix(0.985, 0, 0, 0.985, 0, 1)",
+    "passed": true
+  },
+  {
+    "mode": "reduced",
+    "hover": "none",
+    "press": "none",
+    "passed": true
+  }
+]

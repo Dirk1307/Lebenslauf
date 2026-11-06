@@ -4,3 +4,4 @@ test-results/
 .netlify/
 .DS_Store
 dist/
+.agents/skills/

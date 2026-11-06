@@ -177,6 +177,7 @@ const digest = bytes => createHash('sha256').update(bytes).digest('hex');
       const button=page.locator(`[data-step="${step}"]`);
       await button.focus(); await page.keyboard.press('Enter');
       await dialog.waitFor({state:'visible'});
+      assert.equal(await dialog.evaluate(el=>el.getAnimations().length),0,'Keyboard opens the details immediately');
       assert.equal(await button.getAttribute('aria-expanded'),'true');
       assert.equal(await page.locator('[data-step][aria-expanded="true"]').count(),1);
       assert.equal(await page.locator('#process-name').textContent(),stepNames[step]);
@@ -202,11 +203,45 @@ const digest = bytes => createHash('sha256').update(bytes).digest('hex');
       else if(step===2)await page.mouse.click(2,80);
       else await page.keyboard.press('Escape');
       await page.locator('#work-step-dialog').waitFor({state:'hidden'});
+      // Native <dialog> dispatches its close event in a later rendering task.
+      await page.waitForFunction(()=>document.body.style.overflow!=='hidden');
       assert.equal(await page.locator('[data-step][aria-expanded="true"]').count(),0);
       assert.equal(await button.evaluate(el=>el===document.activeElement),true);
       assert.notEqual(await page.evaluate(()=>document.body.style.overflow),'hidden');
     }
     passed(`${width}px: vier Expandable Cards, Fokusbegrenzung/-rückgabe, Escape, Schließen, Hintergrundklick und Schrittwechsel`);
+    if(width===1440){
+      await instantScroll(page,'#arbeitsweise');
+      await page.locator('[data-step="0"]').click();
+      const jump=await dialog.evaluate(el=>{
+        const entrance=el.getAnimations().find(a=>a.effect.getKeyframes().some(k=>'transform' in k));
+        if(!entrance)throw new Error('Pointer opening must retain the expandable-card animation');
+        entrance.pause(); entrance.currentTime=60;
+        const before=el.getBoundingClientRect();
+        el.querySelector('.work-dialog-close').dispatchEvent(new MouseEvent('click',{bubbles:true,detail:1}));
+        const after=el.getBoundingClientRect();
+        return Math.max(...['x','y','width','height'].map(key=>Math.abs(before[key]-after[key])));
+      });
+      assert.ok(jump<1,`Closing during entry must preserve the visible frame, jump: ${jump}px`);
+      await dialog.waitFor({state:'hidden'});
+      await page.waitForFunction(()=>document.body.style.overflow!=='hidden');
+      assert.equal(await page.locator('[data-step="0"]').evaluate(el=>el===document.activeElement),true);
+      assert.notEqual(await page.evaluate(()=>document.body.style.overflow),'hidden');
+      // Escape also cancels an in-flight pointer opening immediately.
+      await page.locator('[data-step="0"]').click();
+      await page.keyboard.press('Escape');
+      assert.equal(await dialog.isVisible(),false);
+      passed('Dialog: schnelles Schließen ohne Bildsprung, sofortiges Escape und vollständige Fokus-/Scroll-Rückgabe');
+    }
+    if(width===390){
+      await instantScroll(page,'#arbeitsweise');
+      await page.locator('[data-step="0"]').hover();
+      await page.waitForTimeout(650);
+      assert.equal(await page.evaluate(()=>matchMedia('(hover: hover) and (pointer: fine)').matches),false);
+      assert.equal(await page.locator('[data-step="0"]').evaluate(el=>getComputedStyle(el).transform),'none');
+      assert.equal(await page.locator('[data-step="0"] .process-visual').evaluate(el=>getComputedStyle(el).transform),'none');
+      passed('Touch: keine nachgeahmten Hover-Bewegungen oder Vergrößerungen auf den Arbeitsweise-Karten');
+    }
     if (width<=780) {
       await instantScroll(page,'#erfahrung');
       await page.locator('.cases-stage').focus();

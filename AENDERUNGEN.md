@@ -6,6 +6,14 @@
 
 V6A enthält eine statische HTML-Seite mit mehreren aufeinander aufbauenden CSS-Ständen und drei eingebetteten Skriptblöcken. Die Effekte sind eigene Vanilla-JavaScript-Implementierungen; es wurden keine Componentry-/React-Komponenten importiert.
 
+## Design-Skills installiert und angewendet · 6. November 2026
+
+- Taste, Impeccable und alle 17 Emil-Kowalski-Skills projektlokal für Codex installiert; Quellen und Prüfsummen in `skills-lock.json`, Wiederherstellung über `npm run skills:restore`. Beim blockierten Impeccable-Bundle wurde erfolgreich die offizielle GitHub-Quelle verwendet.
+- Hover auf geeignete Zeigergeräte begrenzt, Foto-/Illustrationszoom dezent auf 1,03 abgestimmt, Kartenhub auf 2 px und kurze Druckrückmeldung ergänzt. Reduzierte Bewegung und Tastatur lösen keinen zusätzlichen Versatz aus.
+- Arbeitsweise-Dialog auf 260/160 ms verkürzt; schnelles Schließen setzt am sichtbaren Zwischenzustand an. Tastaturöffnung und Escape reagieren sofort. Animierter Eckenradius entfernt; Fokusbegrenzung und Rückgabe bleiben erhalten.
+- Sechs veraltete CSS-Regeln des früheren Arbeitsweise-Outputs entfernt, nachdem Impeccable dort einen unbenutzten Akzentrand gemeldet hat.
+- Bestehende Inhalte, Layout, Farben, Schriften, beide Fotos und die telefonfreie Lebenslauf-PDF bleiben erhalten. Aktuelle Einzeldatei neu erzeugt; vollständiger Browserlauf mit 43 bestandenen Prüfgruppen. Anwendung und Nachweise: `docs/SKILLS.md`.
+
 ## Foto-Hinweise entfernt · 6. November 2026
 
 - Die beiden sichtbaren „BEWEG DEINE MAUS“-Hinweise am Hero- und Über-mich-Foto entfernt.

@@ -87,6 +87,10 @@ CHROMIUM_PATH=/usr/bin/chromium npm test
 
 Der Test startet seinen eigenen lokalen Server mit der vorgesehenen Content Security Policy. Ergebnisse und Screenshots entstehen unter `test-results/`. Das Verzeichnis wird nicht veröffentlicht. Automatische Tests ersetzen keine Prüfung mit echten Mobilgeräten und Screenreadern.
 
+## Design- und Animations-Skills
+
+Taste, Impeccable und die Emil-Kowalski-Skills sind projektlokal für Codex installiert und auf die vorhandenen Interaktionen angewendet. Nach einem neuen Checkout stellt `npm run skills:restore` die in `skills-lock.json` festgehaltenen Versionen wieder her. Die Skills werden für den lokalen Website-Start und das Hosting nicht benötigt. Installationsweg, angewendete Empfehlungen und Prüfungen: [docs/SKILLS.md](docs/SKILLS.md).
+
 ## Veröffentlichung vorbereiten
 
 Die Konfigurationen für Vercel und Netlify sind vorhanden; es wurde nichts veröffentlicht. Beide verwenden denselben kleinen Kopierschritt:

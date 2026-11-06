@@ -2,6 +2,22 @@
 
 Stand des vollständigen Prüflaufs: 6. November 2026. Geprüft wurde die vorhandene Website nach den gezielten technischen Änderungen und den freigegebenen Inhaltsanpassungen: Hero ohne Kappe/mit verschränkten Armen, entfernter Studien-Eintrag, Expandable Cards im Bereich Arbeitsweise sowie die anhand der Nutzerkorrekturen und des Lebenslaufs überarbeiteten Texte und sieben unterschiedliche Illustrationen in Abschnitt 03/04.
 
+## Ergänzung · 6. November 2026: Design- und Animations-Skills
+
+Taste, Impeccable und die Emil-Kowalski-Skills wurden projektlokal für Codex installiert und gezielt auf die vorhandenen Interaktionen angewendet. Der abschließende vollständige Browserlauf enthält **43 bestandene Prüfgruppen** und sechs axe-Prüfungen ohne automatische Verstöße. Neu geprüft: Tastaturöffnung ohne Warteanimation, sichtbare Kontinuität beim schnellen Schließen einer noch öffnenden Karte, sofortiges Escape und ausbleibender Hover-Zoom auf dem emulierten Touch-Gerät. Die bestehenden Foto-, Scroll-, Fallback-, PDF- und Offline-Prüfungen bestehen ebenfalls.
+
+Impeccable `context` wurde ausgeführt; der gezielte Detektorlauf meldete eine Akzentlinie in einer nicht mehr verwendeten `.process-output`-Regel. Die sechs Regeln dieses alten Outputs sind anschließend entfernt worden. Der ursprüngliche Befund bleibt unter `docs/qa/skills/impeccable-detect.json` erhalten; eine nachträgliche pauschale Unterdrückung fand nicht statt.
+
+Taste `perf.mjs` wurde unverändert mit drei Messdurchläufen je Breite bei 1440 und 390 px ausgeführt. Gemessen nach dem Durchscrollen: **255,3/254,1 KiB Transfer**, **19/17 Requests**, **320/268 ms medianer lokaler LCP**, **78/51 ms Blocking Time**, CLS gerundet **0,000**. Keine kaputten Requests oder ungenutzten Effektmodule. Diese lokalen CPU-Messungen sind keine Feldwerte unter Mobilfunkbedingungen. Die PDF wird erst beim Download angefordert und ist in dieser Messung nicht enthalten. WebGL-Kontexte bleiben ohne Mausinteraktion bei null; der vollständige Browserlauf aktiviert und prüft beide Ripples gesondert.
+
+Der Taste-Check meldet ausdrücklich **1 FAIL und 3 WARN**; dies wird nicht als vollständig bestandener Performance-Check ausgegeben:
+
+- Die Desktop-Sammelprüfung „oversized images“ zählt vier Treffer: das unveränderte Über-mich-Porträt und dreimal `network.svg`. Bei der SVG wird die deklarierte Breite von 1440 mit jeder einzelnen schmalen Split-Fläche verglichen. Sie ist eine Vektorgrafik und wird absichtlich mit `background-size:300% 100%` über drei Teilflächen verteilt; das sind keine drei übergroßen Rasterbilder. Dieser Teil des Befunds ist ein Fehlalarm für die vorhandene Split-Darstellung.
+- Das Über-mich-Porträt und mobil auch das Hero-Foto haben mehr Quellpixel als für diese konkrete CSS-Breite nötig. Beide freigegebenen Originaldateien bleiben bewusst unverändert. Sie sind bereits WebP-Dateien von rund 85 bzw. 39 KiB und unterschreiten die Transferbudgets deutlich. Diese verbleibende Abmessungswarnung ist dokumentiert, nicht durch eine Veränderung der Fotos oder des Prüfers beseitigt.
+- Bei beiden Breiten meldet der Prüfer drei Schriftfamilien. Neben den zwei freigegebenen Textschriften enthält `V6A Symbols` nur die wenigen benötigten monochromen Zeichen. Insgesamt werden drei Schriftdateien mit 64 KiB geladen; Datei- und Größenbudgets bestehen. Die kleine Symbolschrift verhindert bereits geprüfte Emoji-/Ersatzzeichenprobleme.
+
+Quellen, Installationsweg und konkrete Umsetzung: [docs/SKILLS.md](docs/SKILLS.md). Rohdaten: [docs/qa/skills/perf.json](docs/qa/skills/perf.json).
+
 ## Ergänzung · 6. November 2026: Lebenslauf-Download
 
 Die bereitgestellte PDF ist als separate Website-Version ohne Telefonnummer eingebunden. Die Nummer und das zugehörige Symbol sind durch echte PDF-Redaktion entfernt, nicht nur überdeckt. Ausgelesener Text und Link-Anmerkungen enthalten keinen Telefonkontakt mehr. Beide Seiten wurden außerhalb der entfernten Zeile gerendert mit dem Original verglichen: unverändert. Das Original bleibt separat erhalten.
@@ -50,7 +66,7 @@ Der abschließende maschinenlesbare Bericht und ausgewählte Screenshots liegen 
 | Einzeldatei-Vorschau | Neu aus aktuellen Quellen erzeugt; eingebettetes Hero-Bild mit 1000 × 667, Studien-Bezug entfernt, Arbeitsweise-Dialog auf Smartphone/Desktop ohne Server und externe Ressourcenanfragen geprüft |
 | Ressourcen und Sicherheit | Keine JavaScript-/Konsolenfehler, HTTP-Fehler, CSP-Verstöße oder externen Ressourcenanfragen im Prüflauf |
 
-Insgesamt: **41 Prüfgruppen bestanden**. Einzelne Prüfgruppen enthalten mehrere Assertions bzw. Auflösungen. Es wurden keine fehlgeschlagenen Prüfungen als bestanden gewertet und keine Tests übersprungen.
+Insgesamt: **43 Prüfgruppen bestanden**. Einzelne Prüfgruppen enthalten mehrere Assertions bzw. Auflösungen. Es wurden keine fehlgeschlagenen Prüfungen als bestanden gewertet und keine Tests übersprungen. Der zusätzliche Taste-Budgetcheck ist oben mit seinem tatsächlichen FAIL/WARN-Ergebnis getrennt aufgeführt.
 
 ## Integrität und Veröffentlichungsvorbereitung
 

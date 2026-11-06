@@ -15,7 +15,8 @@
   }));
   const art = dialog.querySelector('.work-dialog-art');
   const closeButton = dialog.querySelector('.work-dialog-close');
-  let current = 0, invoker = null, animation = null, closing = false, savedStyles = null;
+  const easing = getComputedStyle(dialog).getPropertyValue('--ease').trim();
+  let current = 0, invoker = null, animation = null, closing = false, savedStyles = null, animateSession = false;
 
   function setContent(index) {
     current = (index + content.length) % content.length;
@@ -49,32 +50,39 @@
     animation?.cancel();
     animation = null;
   }
-  function open(index, button) {
+  function open(index, button, pointerAction) {
     if (dialog.open) return;
     invoker = button;
     closing = false;
+    animateSession = pointerAction;
+    dialog.toggleAttribute('data-instant', !animateSession || motion.matches);
     setContent(index);
     lockScroll();
     try { dialog.showModal(); } catch { restoreScroll(); return; }
-    if (!motion.matches && typeof dialog.animate === 'function') {
+    if (animateSession && !motion.matches && typeof dialog.animate === 'function') {
       animation = dialog.animate([
-        { transform: cardTransform(), opacity: .4, borderRadius: '18px' },
-        { transform: 'translate(0,0) scale(1,1)', opacity: 1, borderRadius: '26px' }
-      ], { duration: 400, easing: 'cubic-bezier(.22,1,.36,1)' });
+        { transform: cardTransform(), opacity: .4 },
+        { transform: 'translate(0,0) scale(1,1)', opacity: 1 }
+      ], { duration: 260, easing });
     }
   }
-  function close() {
+  function close(pointerAction = true) {
     if (!dialog.open || closing) return;
     closing = true;
+    // Capture the visible frame before cancelling: a quick close must not jump
+    // to the fully expanded card before it returns to its trigger.
+    const style = getComputedStyle(dialog);
+    const from = { transform: style.transform, opacity: style.opacity };
     stopAnimation();
-    if (motion.matches || document.hidden || typeof dialog.animate !== 'function') {
+    if (!pointerAction || !animateSession || motion.matches || document.hidden || typeof dialog.animate !== 'function') {
       dialog.close(); return;
     }
     animation = dialog.animate([
-      { transform: 'translate(0,0) scale(1,1)', opacity: 1 },
+      from,
       { transform: cardTransform(), opacity: 0 }
-    ], { duration: 200, easing: 'cubic-bezier(.4,0,1,1)', fill: 'forwards' });
-    animation.finished.then(() => { if (dialog.open) dialog.close(); }).catch(() => {});
+    ], { duration: 160, easing, fill: 'forwards' });
+    const leaving = animation;
+    leaving.finished.then(() => { if (animation === leaving && dialog.open) dialog.close(); }).catch(() => {});
   }
   dialog.addEventListener('close', () => {
     stopAnimation();
@@ -83,7 +91,7 @@
     restoreScroll();
     invoker?.focus({ preventScroll: true });
   });
-  dialog.addEventListener('cancel', e => { e.preventDefault(); close(); });
+  dialog.addEventListener('cancel', e => { e.preventDefault(); close(false); });
   dialog.addEventListener('keydown', e => {
     if (e.key !== 'Tab') return;
     const focusable = [...dialog.querySelectorAll('button:not([disabled]),a[href],[tabindex]:not([tabindex="-1"])')]
@@ -95,7 +103,7 @@
       e.preventDefault(); first?.focus();
     }
   });
-  closeButton.addEventListener('click', close);
+  closeButton.addEventListener('click', e => close(e.detail > 0));
   let pointerStartedOutside = false;
   function outside(e) {
     const r = dialog.getBoundingClientRect();
@@ -110,10 +118,13 @@
   motion.addEventListener('change', () => {
     if (motion.matches) { stopAnimation(); if (closing && dialog.open) dialog.close(); }
   });
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) { stopAnimation(); if (closing && dialog.open) dialog.close(); }
+  });
   addEventListener('resize', () => { stopAnimation(); if (closing && dialog.open) dialog.close(); }, { passive: true });
 
   buttons.forEach((button, index) => {
-    button.addEventListener('click', () => open(index, button));
+    button.addEventListener('click', e => open(index, button, e.detail > 0));
     button.disabled = false;
     document.getElementById(button.getAttribute('aria-describedby')).hidden = true;
   });

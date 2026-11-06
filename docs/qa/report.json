@@ -4,6 +4,7 @@
     "390px Website: echter PDF-Download mit korrektem Dateinamen und SHA-256",
     "390px geöffnete Arbeitsweise-Karte: axe WCAG A/AA, keine automatischen Verstöße",
     "390px: vier Expandable Cards, Fokusbegrenzung/-rückgabe, Escape, Schließen, Hintergrundklick und Schrittwechsel",
+    "Touch: keine nachgeahmten Hover-Bewegungen oder Vergrößerungen auf den Arbeitsweise-Karten",
     "Smartphone normale Bewegung: axe WCAG A/AA, keine automatischen Verstöße",
     "Smartphone reduzierte Bewegung: axe WCAG A/AA, keine automatischen Verstöße",
     "390px: kein horizontaler Überlauf, Bilder, Überschriften, CTAs, vier Arbeitsweise-Schritte",
@@ -13,6 +14,7 @@
     "1440px Website: echter PDF-Download mit korrektem Dateinamen und SHA-256",
     "1440px geöffnete Arbeitsweise-Karte: axe WCAG A/AA, keine automatischen Verstöße",
     "1440px: vier Expandable Cards, Fokusbegrenzung/-rückgabe, Escape, Schließen, Hintergrundklick und Schrittwechsel",
+    "Dialog: schnelles Schließen ohne Bildsprung, sofortiges Escape und vollständige Fokus-/Scroll-Rückgabe",
     "Beide Fotos: WebGL-Ripple reagiert, rendert fehlerfrei und stoppt im Ruhezustand",
     "Desktop: Split-Flip endet lesbar, Flip Stack erreicht alle drei Erfahrungsfelder",
     "Hero zeichnet außerhalb des Sichtfelds keine weiteren Frames",
@@ -74,26 +76,26 @@
   "metrics": {
     "320": {
       "cls": 0,
-      "lcp": 936,
-      "heroFrames": 17,
+      "lcp": 348,
+      "heroFrames": 27,
       "resources": 16
     },
     "390": {
       "cls": 0,
-      "lcp": 532,
-      "heroFrames": 28,
+      "lcp": 404,
+      "heroFrames": 27,
       "resources": 16
     },
     "768": {
       "cls": 0.0005579781708893952,
-      "lcp": 436,
+      "lcp": 344,
       "heroFrames": 26,
       "resources": 16
     },
     "1440": {
-      "cls": 0.00024511561766573433,
-      "lcp": 440,
-      "heroFrames": 27,
+      "cls": 0,
+      "lcp": 392,
+      "heroFrames": 26,
       "resources": 17
     }
   },

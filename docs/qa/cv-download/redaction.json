@@ -1,0 +1,12 @@
+{
+  "pages": 2,
+  "phone_lines_removed": 1,
+  "phone_absent_in_extracted_text": true,
+  "phone_icon_removed": true,
+  "telephone_links_absent": true,
+  "email_retained": true,
+  "original_file_preserved": true,
+  "bytes": 223146,
+  "sha256": "5777649a7655bf858647b19f516c7718aaf1fcd1a79b918c18451335ad39c2ff",
+  "render_matches_original_outside_phone_line": true
+}

@@ -1,6 +1,7 @@
 {
   "checks": [
     "390px: mobiles Menü, Tastatur, Escape und Kontaktanker",
+    "390px Website: echter PDF-Download mit korrektem Dateinamen und SHA-256",
     "390px geöffnete Arbeitsweise-Karte: axe WCAG A/AA, keine automatischen Verstöße",
     "390px: vier Expandable Cards, Fokusbegrenzung/-rückgabe, Escape, Schließen, Hintergrundklick und Schrittwechsel",
     "Smartphone normale Bewegung: axe WCAG A/AA, keine automatischen Verstöße",
@@ -9,6 +10,7 @@
     "768px: mobiles Menü, Tastatur, Escape und Kontaktanker",
     "768px: vier Expandable Cards, Fokusbegrenzung/-rückgabe, Escape, Schließen, Hintergrundklick und Schrittwechsel",
     "768px: kein horizontaler Überlauf, Bilder, Überschriften, CTAs, vier Arbeitsweise-Schritte",
+    "1440px Website: echter PDF-Download mit korrektem Dateinamen und SHA-256",
     "1440px geöffnete Arbeitsweise-Karte: axe WCAG A/AA, keine automatischen Verstöße",
     "1440px: vier Expandable Cards, Fokusbegrenzung/-rückgabe, Escape, Schließen, Hintergrundklick und Schrittwechsel",
     "Beide Fotos: WebGL-Ripple reagiert, rendert fehlerfrei und stoppt im Ruhezustand",
@@ -21,20 +23,23 @@
     "320px: mobiles Menü, Tastatur, Escape und Kontaktanker",
     "320px: vier Expandable Cards, Fokusbegrenzung/-rückgabe, Escape, Schließen, Hintergrundklick und Schrittwechsel",
     "320px: kein horizontaler Überlauf, Bilder, Überschriften, CTAs, vier Arbeitsweise-Schritte",
-    "Spätere PDF-Verknüpfung (data-url): echter Download-Link ohne erfundene PDF",
-    "Spätere PDF-Verknüpfung (plain-link): echter Download-Link ohne erfundene PDF",
     "Fallback initial-reduced: Bild sichtbar, keine Skriptfehler",
     "Fallback no-observer: Bild sichtbar, keine Skriptfehler",
     "Fallback no-canvas: Bild sichtbar, keine Skriptfehler",
     "Fallback no-dialog: Bild sichtbar, keine Skriptfehler",
     "WebGL deaktiviert: 2D-Ripple auf beiden Fotos, Originalbilder bleiben sichtbar",
     "WebGL-Kontextverlust: Originalfoto bleibt sichtbar",
+    "390px Website ohne JavaScript: echter PDF-Download mit korrektem Dateinamen und SHA-256",
     "390px ohne JavaScript: Navigation, Überschriften, Kompetenzen, drei Erfahrungsfelder lesbar",
+    "1440px Website ohne JavaScript: echter PDF-Download mit korrektem Dateinamen und SHA-256",
     "1440px ohne JavaScript: Navigation, Überschriften, Kompetenzen, drei Erfahrungsfelder lesbar",
     "844×390: Querformat / schmaler Zoom-Viewport ohne abgeschnittene Pin-Stufen",
     "720×450: Querformat / schmaler Zoom-Viewport ohne abgeschnittene Pin-Stufen",
+    "390px Einzeldatei: echter PDF-Download mit korrektem Dateinamen und SHA-256",
     "390px: aktuelle Einzeldatei enthält das freigegebene Hero-Foto und funktionsfähige Arbeitsweise-Karten, ohne Netzwerkanfragen",
+    "1440px Einzeldatei: echter PDF-Download mit korrektem Dateinamen und SHA-256",
     "1440px: aktuelle Einzeldatei enthält das freigegebene Hero-Foto und funktionsfähige Arbeitsweise-Karten, ohne Netzwerkanfragen",
+    "Einzeldatei ohne JavaScript: echter PDF-Download mit korrektem Dateinamen und SHA-256",
     "Keine JavaScript-/Konsolenfehler, HTTP-Fehler, CSP-Verstöße oder externen Ressourcenanfragen"
   ],
   "browsers": [
@@ -68,28 +73,33 @@
   ],
   "metrics": {
     "320": {
-      "cls": 0.0006625311007323088,
-      "lcp": 656,
-      "heroFrames": 27,
+      "cls": 0,
+      "lcp": 936,
+      "heroFrames": 17,
       "resources": 16
     },
     "390": {
       "cls": 0,
-      "lcp": 492,
-      "heroFrames": 26,
+      "lcp": 532,
+      "heroFrames": 28,
       "resources": 16
     },
     "768": {
       "cls": 0.0005579781708893952,
-      "lcp": 408,
-      "heroFrames": 27,
+      "lcp": 436,
+      "heroFrames": 26,
       "resources": 16
     },
     "1440": {
-      "cls": 0,
-      "lcp": 480,
-      "heroFrames": 26,
+      "cls": 0.00024511561766573433,
+      "lcp": 440,
+      "heroFrames": 27,
       "resources": 17
     }
+  },
+  "pdf": {
+    "filename": "Lebenslauf-Dirk-Herrmann.pdf",
+    "bytes": 223146,
+    "sha256": "5777649a7655bf858647b19f516c7718aaf1fcd1a79b918c18451335ad39c2ff"
   }
 }

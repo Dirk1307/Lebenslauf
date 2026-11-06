@@ -33,3 +33,10 @@
   for = "/assets/work-card.js"
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/assets/lebenslauf-dirk-herrmann.pdf"
+  [headers.values]
+    Content-Type = "application/pdf"
+    Content-Disposition = 'attachment; filename="Lebenslauf-Dirk-Herrmann.pdf"'
+    Cache-Control = "public, max-age=0, must-revalidate"

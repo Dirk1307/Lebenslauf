@@ -2,6 +2,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs/promises');
 const path = require('node:path');
 const http = require('node:http');
+const { createHash } = require('node:crypto');
 const { chromium } = require('playwright');
 const { AxeBuilder } = require('@axe-core/playwright');
 
@@ -10,12 +11,19 @@ const results = path.join(root, 'test-results');
 const report = { checks: [], browsers: [], violations: [], metrics: {} };
 let browser, server;
 function passed(name) { report.checks.push(name); console.log('PASS', name); }
-const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+const pdfName = 'Lebenslauf-Dirk-Herrmann.pdf';
+const digest = bytes => createHash('sha256').update(bytes).digest('hex');
 
 (async () => {
   await fs.rm(results, { recursive: true, force: true });
   await fs.mkdir(results, { recursive: true });
   const config = JSON.parse(await fs.readFile(path.join(root, 'vercel.json'), 'utf8'));
+  const pdfBytes=await fs.readFile(path.join(root,'assets/lebenslauf-dirk-herrmann.pdf'));
+  const pdfHash=digest(pdfBytes);
+  const redaction=JSON.parse(await fs.readFile(path.join(root,'docs/qa/cv-download/redaction.json'),'utf8'));
+  assert.equal(pdfHash,redaction.sha256,'PDF must match the reviewed phone-free version');
+  assert.equal(redaction.phone_absent_in_extracted_text,true);
+  report.pdf={filename:pdfName,bytes:pdfBytes.length,sha256:pdfHash};
   // Test the packaged site with the real deployment CSP, not just permissive localhost.
   server = http.createServer(async (req, res) => {
     try {
@@ -24,8 +32,11 @@ const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
       if (!file.startsWith(path.join(root, 'dist') + path.sep)) { res.writeHead(403).end(); return; }
       const body = await fs.readFile(file);
       for (const h of config.headers[0].headers) res.setHeader(h.key, h.value);
-      const types = { '.html':'text/html; charset=utf-8', '.css':'text/css', '.js':'text/javascript', '.webp':'image/webp', '.svg':'image/svg+xml', '.woff':'font/woff', '.woff2':'font/woff2' };
+      const types = { '.html':'text/html; charset=utf-8', '.css':'text/css', '.js':'text/javascript', '.webp':'image/webp', '.svg':'image/svg+xml', '.woff':'font/woff', '.woff2':'font/woff2', '.pdf':'application/pdf' };
       res.setHeader('Content-Type', types[path.extname(file)] || 'application/octet-stream');
+      for(const rule of config.headers.filter(rule=>rule.source===pathname)){
+        for(const h of rule.headers)res.setHeader(h.key,h.value);
+      }
       res.writeHead(200).end(body);
     } catch { res.writeHead(404).end('Not found'); }
   });
@@ -70,6 +81,28 @@ const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
   async function instantScroll(page, selector, offset = 90) {
     await page.locator(selector).evaluate((el, offset) => scrollTo({ top: scrollY + el.getBoundingClientRect().top - offset, behavior: 'instant' }), offset);
     await page.waitForTimeout(1000);
+  }
+  async function verifyPDFDownload(page,label) {
+    const link=page.getByRole('link',{name:'Lebenslauf herunterladen',exact:true});
+    assert.equal(await link.isVisible(),true);
+    assert.equal(await link.getAttribute('download'),pdfName);
+    const href=await link.getAttribute('href');
+    if(href.startsWith('data:'))assert.equal(href.startsWith('data:application/pdf;base64,'),true);
+    else {
+      assert.equal(href,'assets/lebenslauf-dirk-herrmann.pdf');
+      const response=await page.request.get(new URL(href,base).href);
+      assert.equal(response.status(),200);
+      assert.match(response.headers()['content-type'],/^application\/pdf/);
+      assert.equal(response.headers()['content-disposition'],`attachment; filename="${pdfName}"`);
+      assert.equal(digest(await response.body()),pdfHash);
+    }
+    const [download]=await Promise.all([page.waitForEvent('download'),link.click()]);
+    assert.equal(await download.failure(),null);
+    assert.equal(download.suggestedFilename(),pdfName);
+    const downloaded=await fs.readFile(await download.path());
+    assert.equal(downloaded.subarray(0,5).toString(),'%PDF-');
+    assert.equal(digest(downloaded),pdfHash);
+    passed(`${label}: echter PDF-Download mit korrektem Dateinamen und SHA-256`);
   }
   async function noOverflow(page) {
     assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
@@ -126,11 +159,10 @@ const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
       passed(`${width}px: mobiles Menü, Tastatur, Escape und Kontaktanker`);
     }
     await instantScroll(page,'#start',76);
-    await page.getByRole('button',{name:'Lebenslauf-PDF · folgt'}).click();
-    assert.equal(await page.locator('#cv-note').isVisible(),true);
-    assert.equal(await page.locator('#cv-info').getAttribute('aria-expanded'),'true');
-    await page.locator('#cv-info').click();
-    assert.equal(await page.locator('#cv-note').isVisible(),false);
+    const pdfLink=page.getByRole('link',{name:'Lebenslauf herunterladen',exact:true});
+    assert.equal(await pdfLink.getAttribute('href'),'assets/lebenslauf-dirk-herrmann.pdf');
+    assert.equal(await page.locator('#cv-note,#cv-info').count(),0);
+    if(width===390||width===1440)await verifyPDFDownload(page,`${width}px Website`);
     await page.getByRole('link',{name:'Mehr über mich'}).click();
     await page.waitForTimeout(1200);
     assert.equal(await page.evaluate(()=>location.hash),'#ueber-mich');
@@ -252,23 +284,6 @@ const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
     await context.close();
   }
 
-  for (const mode of ['data-url','plain-link']) {
-    const {page,context}=await open({viewport:{width:1440,height:900}},undefined,async page=>{
-      await page.route(base+'/',async route=>{
-        const response=await route.fetch();
-        let body=await response.text();
-        if(mode==='data-url') body=body.replace('data-cv-url=""','data-cv-url="assets/lebenslauf-dirk-herrmann.pdf"');
-        else body=body.replace(/<button class="hero-cv"[^>]*>.*?<\/button>/,'<a class="hero-cv" href="assets/lebenslauf-dirk-herrmann.pdf" download>Lebenslauf herunterladen ↓</a>');
-        await route.fulfill({response,body});
-      });
-    });
-    const link=page.getByRole('link',{name:'Lebenslauf herunterladen'});
-    assert.equal(await link.getAttribute('href'),'assets/lebenslauf-dirk-herrmann.pdf');
-    assert.notEqual(await link.getAttribute('download'),null);
-    assert.equal(await page.locator('.scroll-enhanced').count(),1);
-    passed(`Spätere PDF-Verknüpfung (${mode}): echter Download-Link ohne erfundene PDF`);
-    await context.close();
-  }
   for(const mode of ['initial-reduced','no-observer','no-canvas','no-dialog']) {
     const init=mode==='no-observer'?()=>{delete window.IntersectionObserver;}:mode==='no-canvas'?()=>{HTMLCanvasElement.prototype.getContext=()=>null;}:mode==='no-dialog'?()=>{HTMLDialogElement.prototype.showModal=undefined;}:undefined;
     const {page,context}=await open({viewport:{width:1440,height:900},reducedMotion:mode==='initial-reduced'?'reduce':'no-preference'},init);
@@ -333,6 +348,7 @@ const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
     assert.equal(await page.getByRole('navigation').getByRole('link',{name:'Über mich'}).isVisible(),true);
     assert.equal(await page.locator('.case-card').evaluateAll(els=>els.every(el=>getComputedStyle(el).position==='relative')),true);
     assert.equal(await page.locator('.process-step-description').evaluateAll(els=>els.length===4 && els.every(el=>!el.hidden)),true);
+    await verifyPDFDownload(page,`${viewport.width}px Website ohne JavaScript`);
     passed(`${viewport.width}px ohne JavaScript: Navigation, Überschriften, Kompetenzen, drei Erfahrungsfelder lesbar`);
     await context.close();
   }
@@ -358,7 +374,14 @@ const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
     assert.equal(await page.locator('#process-name').textContent(),'03 / ENTWICKELN');
     await page.keyboard.press('Escape');
     await page.locator('#work-step-dialog').waitFor({state:'hidden'});
+    await verifyPDFDownload(page,`${width}px Einzeldatei`);
     passed(`${width}px: aktuelle Einzeldatei enthält das freigegebene Hero-Foto und funktionsfähige Arbeitsweise-Karten, ohne Netzwerkanfragen`);
+    await context.close();
+  }
+  {
+    const context=await browser.newContext({viewport:{width:390,height:900},javaScriptEnabled:false}),page=await context.newPage();
+    await page.setContent(await fs.readFile(path.join(root,'vorschau/Dirk_Herrmann_V6A_Vorschau.html'),'utf8'),{waitUntil:'load'});
+    await verifyPDFDownload(page,'Einzeldatei ohne JavaScript');
     await context.close();
   }
   assert.deepEqual(failures,[],'Browser errors / CSP violations / HTTP failures');

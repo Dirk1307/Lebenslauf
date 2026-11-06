@@ -38,26 +38,6 @@
   }));
   desktop.addEventListener('change', () => setMenu(false));
 
-  // Optional PDF: do not fetch a file that has not been supplied yet.
-  // Set data-cv-url in the HTML only after adding the real PDF (see README).
-  const cv = document.getElementById('cv-info');
-  const cvNote = document.getElementById('cv-note');
-  if (cv && cvNote) {
-    cvNote.hidden = true;
-    if (cv.dataset.cvUrl) {
-      const link = document.createElement('a');
-      link.className = cv.className;
-      link.href = cv.dataset.cvUrl;
-      link.download = 'Lebenslauf-Dirk-Herrmann.pdf';
-      link.textContent = 'Lebenslauf herunterladen ↓';
-      cv.replaceWith(link);
-    } else {
-      cv.addEventListener('click', () => {
-        cvNote.hidden = !cvNote.hidden;
-        cv.setAttribute('aria-expanded', String(!cvNote.hidden));
-      });
-    }
-  }
   // Hide content only after its observer is installed. No JS / no observer = readable.
   if (!motion.matches && 'IntersectionObserver' in window) {
     const observer = new IntersectionObserver(entries => entries.forEach(entry => {

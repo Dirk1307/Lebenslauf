@@ -1,6 +1,12 @@
 # Prüfbericht · V6A technisch optimiert
 
-Stand: 5. November 2026. Geprüft wurde die vorhandene Website nach den gezielten technischen Änderungen und den freigegebenen Inhaltsanpassungen: Hero ohne Kappe/mit verschränkten Armen, entfernter Studien-Eintrag, Expandable Cards im Bereich Arbeitsweise sowie die anhand der Nutzerkorrekturen und des Lebenslaufs überarbeiteten Texte und sieben unterschiedliche Illustrationen in Abschnitt 03/04.
+Stand des vollständigen Prüflaufs: 6. November 2026. Geprüft wurde die vorhandene Website nach den gezielten technischen Änderungen und den freigegebenen Inhaltsanpassungen: Hero ohne Kappe/mit verschränkten Armen, entfernter Studien-Eintrag, Expandable Cards im Bereich Arbeitsweise sowie die anhand der Nutzerkorrekturen und des Lebenslaufs überarbeiteten Texte und sieben unterschiedliche Illustrationen in Abschnitt 03/04.
+
+## Ergänzung · 6. November 2026: Lebenslauf-Download
+
+Die bereitgestellte PDF ist als separate Website-Version ohne Telefonnummer eingebunden. Die Nummer und das zugehörige Symbol sind durch echte PDF-Redaktion entfernt, nicht nur überdeckt. Ausgelesener Text und Link-Anmerkungen enthalten keinen Telefonkontakt mehr. Beide Seiten wurden außerhalb der entfernten Zeile gerendert mit dem Original verglichen: unverändert. Das Original bleibt separat erhalten.
+
+Der Download ist ein nativer HTML-Link und benötigt kein JavaScript. Die Einzeldatei bettet dieselbe PDF als `application/pdf` ein. Die automatische Prüfung gleicht Dateiname und heruntergeladene Bytes mit der geprüften SHA-256 ab; reguläre HTTP-Auslieferung und Offline-Version werden jeweils auch ohne JavaScript geprüft. Redaktionsnachweis: `docs/qa/cv-download/redaction.json`.
 
 ## Ergänzung · 6. November 2026: Begrüßung und Kontakt
 
@@ -8,7 +14,7 @@ Die Begrüßung steht jetzt als „Hi, ich bin Dirk.“ auf dem Schild am Hero-P
 
 Gezielte Browserprüfung mit der vorhandenen Content Security Policy bei **320, 390, 768 und 1440 × 900 Pixeln**: Begrüßung und E-Mail sichtbar, Schild und Adresse innerhalb der Bildschirmbreite, keine horizontale Scrollleiste, E-Mail-Link per Tastatur erreichbar und mindestens 44 px hoch. LinkedIn bleibt vorhanden. Die Kontaktadresse und das `mailto:`-Ziel stimmen überein; es wurde keine E-Mail versendet. Alle vier axe-Prüfungen der betroffenen Bereiche melden keine Verstöße gegen die geprüften WCAG-A/AA-Regeln. Auch die aktualisierte Einzeldatei enthält Begrüßung und E-Mail-Link. Keine Browser-, HTTP- oder CSP-Fehler.
 
-Ergebnisse und Screenshots: `docs/qa/contact-update/`. Der nachfolgende vollständige Regressionsbericht mit 36 Prüfgruppen dokumentiert den vorherigen Stand; diese kleine Text-/Kontaktänderung wurde gezielt geprüft, ohne die unveränderten Interaktionssuiten erneut auszuführen.
+Ergebnisse und Screenshots: `docs/qa/contact-update/`. Die Begrüßungs-/Kontaktänderung wurde zunächst gezielt geprüft. Für den später ergänzten PDF-Download wurde der vollständige Regressionslauf mit echten Downloadprüfungen erneut ausgeführt.
 
 ## Durchführung
 
@@ -38,13 +44,13 @@ Der abschließende maschinenlesbare Bericht und ausgewählte Screenshots liegen 
 | Reduzierte Bewegung | Sowohl beim Seitenstart als auch nachträglich geprüft: sichtbare Überschriften und statische Karten, keine Foto-Ripple-Animation |
 | Ohne JavaScript | Desktop und Smartphone: Navigation, Überschriften, Kompetenztexte und alle Erfahrungsfelder lesbar; Hinweis auf interaktive Zusatzfunktionen |
 | Ohne IntersectionObserver / Canvas / Dialog-Unterstützung | Inhalt und Foto bleiben sichtbar; kein Skriptabbruch. Ohne `showModal()` bleiben die vier Schrittbeschreibungen direkt unter den Karten lesbar |
-| PDF-Platzhalter | Klar als „folgt“ bezeichnet; Hinweis auf-/zuklappbar; keine Anfrage einer fehlenden PDF |
-| PDF-Vorbereitung | Konfigurierter Pfad erzeugt einen Download-Link; auch ein später direkt eingesetzter HTML-Link verhindert die übrigen Funktionen nicht. Keine Test-PDF als Lebenslauf ausgegeben |
+| Lebenslauf-Download | Reale Website-PDF ohne Telefonnummer vorhanden; nativer Download-Link statt Platzhalter, auch ohne JavaScript |
+| PDF-Inhalt und Auslieferung | Zwei Seiten; entfernte Telefonnummer nicht auslesbar. Echte Downloads aus Website/Einzeldatei werden auf Dateinamen, PDF-Inhalt und SHA-256 geprüft; HTTP-Antwort liefert den korrekten PDF-Typ |
 | Automatische Barrierefreiheit | Sechs axe-Prüfungen: Desktop/Smartphone mit normaler und reduzierter Bewegung plus jeweils geöffneter Arbeitsweise-Karte; keine automatischen Verstöße gegen die geprüften WCAG-2/2.1-A/AA- und Best-Practice-Regeln |
 | Einzeldatei-Vorschau | Neu aus aktuellen Quellen erzeugt; eingebettetes Hero-Bild mit 1000 × 667, Studien-Bezug entfernt, Arbeitsweise-Dialog auf Smartphone/Desktop ohne Server und externe Ressourcenanfragen geprüft |
 | Ressourcen und Sicherheit | Keine JavaScript-/Konsolenfehler, HTTP-Fehler, CSP-Verstöße oder externen Ressourcenanfragen im Prüflauf |
 
-Insgesamt: **36 Prüfgruppen bestanden**. Einzelne Prüfgruppen enthalten mehrere Assertions bzw. Auflösungen. Es wurden keine fehlgeschlagenen Prüfungen als bestanden gewertet und keine Tests übersprungen.
+Insgesamt: **41 Prüfgruppen bestanden**. Einzelne Prüfgruppen enthalten mehrere Assertions bzw. Auflösungen. Es wurden keine fehlgeschlagenen Prüfungen als bestanden gewertet und keine Tests übersprungen.
 
 ## Integrität und Veröffentlichungsvorbereitung
 
@@ -66,4 +72,4 @@ Der JSON-Bericht enthält lokale, frühe LCP-/CLS-Beobachtungen aus dem Browser.
 
 Smartphone und Tablet wurden im Chromium-Browser emuliert; echte iPhones/Android-Geräte, Safari, Firefox und reale Screenreader wurden nicht getestet. Automatische Barrierefreiheitstests beweisen keine vollständige Konformität. Eine abschließende Sicht- und Bedienprüfung auf den tatsächlich genutzten Geräten bleibt sinnvoll. Der Inhalt der erzeugten Einzeldatei wurde direkt in den Browser geladen; direkte `file://`-Navigation ist durch die Cloud-Browserrichtlinie gesperrt. Die Vorschau ist für das lokale Öffnen nach dem GitHub-Download vorgesehen.
 
-Die echte Lebenslauf-PDF liegt weiterhin nicht vor. Vercel-/Netlify-Deployment, produktive HTTP-Header und reale Download-Funktion können erst nach Upload bzw. Veröffentlichung abschließend geprüft werden. Es wurden weder veröffentlicht noch Domain, Kontaktdaten oder ein QR-Ziel erfunden. Die lokalen Projekt- und Veröffentlichungsschritte sind in `README.md` beschrieben.
+Die bereinigte Lebenslauf-PDF ist enthalten und der Download lokal geprüft. Vercel-/Netlify-Deployment und produktive HTTP-Header können erst nach einer Veröffentlichung beim Hostinganbieter abschließend geprüft werden. Es wurden weder veröffentlicht noch Domain, Kontaktdaten oder ein QR-Ziel erfunden. Die lokalen Projekt- und Veröffentlichungsschritte sind in `README.md` beschrieben.

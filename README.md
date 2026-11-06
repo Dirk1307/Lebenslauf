@@ -52,25 +52,22 @@ Dann im Browser `http://localhost:8000` öffnen. Mit `Strg+C` beenden. Für die 
 - `AENDERUNGEN.md` und `PRUEFBERICHT.md`: Änderungen, Testergebnisse und Grenzen.
 - Die vier ursprünglichen Übergabedokumente und `referenzen/` bleiben als Ausgangsdokumentation erhalten. Für spätere freigegebene Änderungen gelten der aktuelle Inhaltsstand hier und `AENDERUNGEN.md`.
 
-## Den echten Lebenslauf später ergänzen
+## Lebenslauf herunterladen
 
-1. Die freigegebene PDF als `assets/lebenslauf-dirk-herrmann.pdf` ablegen.
-2. In `index.html` beim Button mit `id="cv-info"` nur dieses Attribut ändern:
+Die freigegebene **Website-Version ohne Telefonnummer** liegt unter `assets/lebenslauf-dirk-herrmann.pdf`. Sie wurde aus dem bereitgestellten Lebenslauf erstellt; die Originaldatei bleibt unverändert. Die Telefonnummer und das zugehörige Symbol wurden mit echter PDF-Redaktion entfernt. Beide Seiten bleiben außerhalb dieser Zeile visuell unverändert. E-Mail und die übrigen Inhalte sind weiterhin enthalten.
 
-   ```html
-   data-cv-url="assets/lebenslauf-dirk-herrmann.pdf"
-   ```
+Der Hero enthält einen normalen HTML-Download-Link:
 
-3. Lokal öffnen, den Download anklicken und Inhalt/Dateiname prüfen. JavaScript wandelt den Platzhalter dann in einen normalen Download-Link um. Das leere Attribut bedeutet weiterhin „PDF folgt“, ohne eine nicht vorhandene Datei anzufragen.
-4. Für einen Download **auch ohne JavaScript** den Platzhalter stattdessen durch diesen normalen Link ersetzen und den dazugehörigen Hinweis entfernen:
+```html
+<a class="hero-cv" href="assets/lebenslauf-dirk-herrmann.pdf"
+   download="Lebenslauf-Dirk-Herrmann.pdf" type="application/pdf">
+  Lebenslauf herunterladen ↓
+</a>
+```
 
-   ```html
-   <a class="hero-cv" href="assets/lebenslauf-dirk-herrmann.pdf" download>
-     Lebenslauf herunterladen ↓
-   </a>
-   ```
+Das funktioniert auch ohne JavaScript. Die Einzeldatei-Vorschau enthält dieselbe PDF eingebettet; auch dort lässt sie sich ohne zusätzliche Datei oder Server herunterladen. Vercel/Netlify sind für `application/pdf`, den Download-Dateinamen und erneute Validierung bei Aktualisierungen konfiguriert.
 
-   Das Skript unterstützt auch diesen Fall. Bis die tatsächliche PDF vorliegt, bleibt die aktuelle Kennzeichnung bestehen.
+Für eine spätere Aktualisierung die bereinigte Website-PDF unter demselben Pfad ersetzen, Telefonnummer/Textauslesung und Darstellung erneut prüfen und die geprüfte SHA-256 in `docs/qa/cv-download/redaction.json` aktualisieren. Danach `node scripts/prepare-preview.cjs` ausführen. `npm test` prüft echte Downloads aus Website und Einzeldatei inklusive Dateinamen, Inhaltstyp und Hash; auch Varianten ohne JavaScript werden getestet.
 
 ## Wiederholbare Browserprüfung (optional)
 
@@ -98,7 +95,7 @@ Die Konfigurationen für Vercel und Netlify sind vorhanden; es wurde nichts ver�
 node scripts/prepare-deploy.cjs
 ```
 
-Dieser kopiert die vorhandene Website nach `dist/`. Es gibt keinen Framework-Build und keine Abhängigkeiten für diesen Schritt. Nur HTML und Assets werden veröffentlicht; Übergabedokumente, Tests, Referenzscreenshots und die zwei ungenutzten Fotovarianten bleiben außerhalb des Veröffentlichungspakets. Eine künftig in `assets/` abgelegte PDF wird mitkopiert. Keine SPA-Weiterleitung: ein fehlendes PDF soll weiterhin eine echte 404 liefern.
+Dieser kopiert die vorhandene Website nach `dist/`. Es gibt keinen Framework-Build und keine Abhängigkeiten für diesen Schritt. Nur HTML und Assets werden veröffentlicht; Übergabedokumente, Tests, Referenzscreenshots und die zwei ungenutzten Fotovarianten bleiben außerhalb des Veröffentlichungspakets. Die aktuelle Website-PDF wird mitkopiert. Keine SPA-Weiterleitung: ein fehlendes PDF soll weiterhin eine echte 404 liefern.
 
 Zum Prüfen des Pakets:
 

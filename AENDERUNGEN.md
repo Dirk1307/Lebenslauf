@@ -6,6 +6,14 @@
 
 V6A enthält eine statische HTML-Seite mit mehreren aufeinander aufbauenden CSS-Ständen und drei eingebetteten Skriptblöcken. Die Effekte sind eigene Vanilla-JavaScript-Implementierungen; es wurden keine Componentry-/React-Komponenten importiert.
 
+## Lebenslauf als Download · 6. November 2026
+
+- Auf Nutzerwunsch eine separate Website-Version des bereitgestellten Lebenslaufs ohne Telefonnummer erstellt. Original-PDF unverändert erhalten; bereinigte Version liegt unter `assets/lebenslauf-dirk-herrmann.pdf`.
+- Telefonnummer und zugehöriges Symbol mit echter PDF-Redaktion entfernt. Kein bloßes Überdecken: Nummer nicht mehr im extrahierten Text, keine `tel:`-Verknüpfung oder eingebetteten Dateien. Bildvergleich bestätigt unveränderte Darstellung beider Seiten außerhalb der Telefonzeile.
+- „Lebenslauf-PDF · folgt“ durch einen nativen Download-Link ersetzt und den Hinweis auf eine noch ausstehende PDF entfernt. Der Link funktioniert ohne JavaScript; nicht mehr benötigte Platzhalter-Logik aus `assets/site.js` entfernt.
+- Die Einzeldatei enthält die PDF mit dem korrekten MIME-Typ eingebettet. Normale Website und Offline-Vorschau liefern dieselbe geprüfte Datei.
+- Download-Dateiname und PDF-/Cache-Header für Vercel und Netlify ergänzt. Tests überprüfen tatsächlich heruntergeladene Bytes gegen die geprüfte SHA-256; bisherige Tests für einen künftig konfigurierbaren Platzhalter wurden durch echte Downloadprüfungen ersetzt.
+
 ## Begrüßung und E-Mail-Kontakt · 6. November 2026
 
 - Begrüßungszeile über dem Hero-Titel entfernt. „Hi, ich bin Dirk.“ ergänzt das vorhandene „NICE TO MEET YOU“-Schild direkt beim Porträt.
